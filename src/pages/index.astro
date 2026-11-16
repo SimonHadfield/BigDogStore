@@ -1,0 +1,348 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PRODUCTS } from '../data/products';
+
+const featuredProducts = PRODUCTS;
+---
+
+<BaseLayout
+  title="Elevated Apparel for Misunderstood Giants"
+  description="UK luxury streetwear brand celebrating Dobermans, Great Danes, and gentle giant breeds through 480GSM heavyweight loopback cotton and modern brutalist tailoring."
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-atelier-850 bg-gradient-to-b from-atelier-950 via-atelier-900 to-atelier-950">
+    <div class="absolute inset-0 z-0 opacity-25">
+      <!-- High contrast editorial image backdrop -->
+      <picture>
+        <source
+          srcset="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1920&q=80"
+          media="(min-width: 768px)"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
+          alt="Canis Nobile Editorial Streetwear Model with Doberman"
+          width="1920"
+          height="1080"
+          loading="eager"
+          decoding="async"
+          class="w-full h-full object-cover grayscale mix-blend-luminosity filter contrast-125"
+        />
+      </picture>
+      <div class="absolute inset-0 bg-gradient-to-t from-atelier-950 via-atelier-950/70 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 bg-atelier-900/80 border border-doberman-rust/50 mb-8 backdrop-blur-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-doberman-rust"></span>
+        <span class="text-[11px] font-mono uppercase tracking-widest text-doberman-tan">
+          Autumn / Winter Capsule &middot; Edition 01
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-editorial font-bold text-white tracking-tight leading-[1.08] mb-6">
+        Elevated Apparel for <br />
+        <span class="italic font-normal text-atelier-200">Misunderstood Giants</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-atelier-300 font-sans leading-relaxed mb-10">
+        British streetwear engineered for the owners of large, commanding breeds. Sculpted from 480GSM organic loopback cotton, avoiding aggressive clichés in favor of architectural proportion and quiet elegance.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="#collection"
+          class="w-full sm:w-auto px-8 py-4 bg-white text-atelier-950 hover:bg-doberman-bone font-mono text-xs uppercase tracking-widest font-semibold transition-all shadow-lg hover:shadow-doberman-rust/20"
+        >
+          Explore Collection
+        </a>
+        <a
+          href="#size-guide"
+          class="w-full sm:w-auto px-8 py-4 bg-transparent border border-atelier-700 hover:border-white text-white font-mono text-xs uppercase tracking-widest transition-all"
+        >
+          Size & Fit System
+        </a>
+      </div>
+
+      <!-- Quick Trust Badges -->
+      <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 border-t border-atelier-850/80 text-left">
+        <div>
+          <span class="block text-xs font-mono uppercase tracking-widest text-white font-semibold">480 GSM</span>
+          <span class="text-[11px] text-atelier-400 font-mono">Custom Loopback Terry</span>
+        </div>
+        <div>
+          <span class="block text-xs font-mono uppercase tracking-widest text-white font-semibold">UK Made</span>
+          <span class="text-[11px] text-atelier-400 font-mono">Knitted in the Midlands</span>
+        </div>
+        <div>
+          <span class="block text-xs font-mono uppercase tracking-widest text-white font-semibold">Royal Mail 24</span>
+          <span class="text-[11px] text-atelier-400 font-mono">Tracked UK Shipping</span>
+        </div>
+        <div>
+          <span class="block text-xs font-mono uppercase tracking-widest text-white font-semibold">Gentle Giants</span>
+          <span class="text-[11px] text-atelier-400 font-mono">No Aggressive Clichés</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Product Grid Section -->
+  <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-mt-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-atelier-800 pb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-doberman-tan block mb-2">
+          Curated Silhouettes
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-editorial font-bold text-white tracking-wide">
+          The Foundry Collection
+        </h2>
+      </div>
+      <p class="text-xs font-mono text-atelier-400 uppercase tracking-widest mt-4 md:mt-0">
+        4 Heavyweight Styles &middot; Made to Last Decades
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {featuredProducts.map((product) => (
+        <article class="group flex flex-col bg-atelier-900/40 border border-atelier-850 hover:border-doberman-rust/60 transition-all duration-300">
+          <!-- Product Image Container -->
+          <a href={`/products/${product.slug}`} class="relative block overflow-hidden aspect-[4/5] bg-atelier-900" aria-label={`View ${product.title}`}>
+            {product.badge && (
+              <span class="absolute top-3 left-3 z-20 px-2 py-1 bg-atelier-950/90 border border-atelier-800 text-[10px] font-mono uppercase tracking-widest text-white">
+                {product.badge}
+              </span>
+            )}
+            <picture>
+              <img
+                src={product.images.primary}
+                alt={product.images.alt}
+                width="600"
+                height="750"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover object-center grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500"
+              />
+            </picture>
+            <div class="absolute inset-0 bg-gradient-to-t from-atelier-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </a>
+
+          <!-- Details & CTAs -->
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-atelier-400 mb-2">
+                <span>{product.specs.weight.split(' ')[0]} GSM</span>
+                <span class="text-white font-semibold">£{product.price}.00</span>
+              </div>
+              <h3 class="text-lg font-editorial font-bold text-white mb-2 group-hover:text-doberman-tan transition-colors">
+                <a href={`/products/${product.slug}`}>{product.title}</a>
+              </h3>
+              <p class="text-xs text-atelier-400 line-clamp-2 leading-relaxed mb-4">
+                {product.description}
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-atelier-850">
+              <div class="flex items-center justify-between mb-4">
+                <!-- Color Swatches Preview -->
+                <div class="flex space-x-1.5" aria-label="Available Colors">
+                  {product.colors.map((c) => (
+                    <span
+                      class="w-3.5 h-3.5 rounded-full border border-atelier-700"
+                      style={`background-color: ${c.hex};`}
+                      title={c.name}
+                    ></span>
+                  ))}
+                </div>
+                <!-- Size indicator -->
+                <span class="text-[10px] font-mono text-atelier-400 uppercase">
+                  S &ndash; XXL Available
+                </span>
+              </div>
+
+              <a
+                href={`/products/${product.slug}`}
+                class="w-full inline-flex items-center justify-center py-2.5 px-4 bg-atelier-850 hover:bg-white text-atelier-200 hover:text-atelier-950 font-mono text-xs uppercase tracking-widest font-semibold transition-all border border-atelier-700 hover:border-white"
+              >
+                Inspect Silhouette
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Size & Fit Guide Section -->
+  <section id="size-guide" class="bg-atelier-900 border-y border-atelier-800 py-24 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono uppercase tracking-widest text-doberman-tan block mb-2">
+          Precision Proportion
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-editorial font-bold text-white tracking-wide mb-4">
+          The Gentle Giant Sizing Matrix
+        </h2>
+        <p class="text-sm text-atelier-300 leading-relaxed">
+          Our silhouettes are cut with architectural boxy volumes to allow effortless ease of movement during high-energy canine walks, urban training, and leisure. Sized for modern street presence.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Fit Philosophy Card 1 -->
+        <div class="p-6 bg-atelier-950 border border-atelier-800">
+          <span class="text-doberman-rust text-xl font-editorial font-bold block mb-2">01. Dropped Shoulder Drape</span>
+          <p class="text-xs text-atelier-400 leading-relaxed">
+            Extended shoulder seams ensure freedom of movement when handling leashes and training gear, with zero binding at the armholes.
+          </p>
+        </div>
+        <!-- Fit Philosophy Card 2 -->
+        <div class="p-6 bg-atelier-950 border border-atelier-800">
+          <span class="text-doberman-rust text-xl font-editorial font-bold block mb-2">02. Heavyweight Non-Collapse</span>
+          <p class="text-xs text-atelier-400 leading-relaxed">
+            480GSM loopback terry and 280GSM dense single jersey maintain their sculptured structure, eliminating clinging or unwanted stretch.
+          </p>
+        </div>
+        <!-- Fit Philosophy Card 3 -->
+        <div class="p-6 bg-atelier-950 border border-atelier-800">
+          <span class="text-doberman-rust text-xl font-editorial font-bold block mb-2">03. The Handler Fit Guide</span>
+          <p class="text-xs text-atelier-400 leading-relaxed">
+            For standard boxy streetwear fit, choose your normal UK size. For a streamlined classic look, order one size down.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sizing Measurement Table -->
+      <div class="overflow-x-auto bg-atelier-950 border border-atelier-800">
+        <table class="w-full text-left text-xs font-mono">
+          <thead class="bg-atelier-850 text-white uppercase tracking-wider border-b border-atelier-700">
+            <tr>
+              <th scope="col" class="py-4 px-6">Size (UK/EU)</th>
+              <th scope="col" class="py-4 px-6">Chest (Inches / CM)</th>
+              <th scope="col" class="py-4 px-6">Body Length (CM)</th>
+              <th scope="col" class="py-4 px-6">Sleeve Pitch (CM)</th>
+              <th scope="col" class="py-4 px-6">Handler Recommendation</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-atelier-850 text-atelier-300">
+            <tr class="hover:bg-atelier-900/50">
+              <td class="py-4 px-6 font-semibold text-white">Small (S)</td>
+              <td class="py-4 px-6">38–40" &middot; 96–101 cm</td>
+              <td class="py-4 px-6">69 cm</td>
+              <td class="py-4 px-6">63 cm</td>
+              <td class="py-4 px-6">Fitted handler frame (5'6" – 5'9")</td>
+            </tr>
+            <tr class="hover:bg-atelier-900/50">
+              <td class="py-4 px-6 font-semibold text-white">Medium (M)</td>
+              <td class="py-4 px-6">41–43" &middot; 104–109 cm</td>
+              <td class="py-4 px-6">71 cm</td>
+              <td class="py-4 px-6">64 cm</td>
+              <td class="py-4 px-6">Athletic urban fit (5'9" – 6'0")</td>
+            </tr>
+            <tr class="hover:bg-atelier-900/50">
+              <td class="py-4 px-6 font-semibold text-white">Large (L)</td>
+              <td class="py-4 px-6">44–46" &middot; 112–117 cm</td>
+              <td class="py-4 px-6">74 cm</td>
+              <td class="py-4 px-6">66 cm</td>
+              <td class="py-4 px-6">Signature boxy streetwear (6'0" – 6'3")</td>
+            </tr>
+            <tr class="hover:bg-atelier-900/50">
+              <td class="py-4 px-6 font-semibold text-white">X-Large (XL)</td>
+              <td class="py-4 px-6">47–49" &middot; 120–125 cm</td>
+              <td class="py-4 px-6">76 cm</td>
+              <td class="py-4 px-6">67 cm</td>
+              <td class="py-4 px-6">Dramatic oversized drape (6'2"+)</td>
+            </tr>
+            <tr class="hover:bg-atelier-900/50">
+              <td class="py-4 px-6 font-semibold text-white">XX-Large (XXL)</td>
+              <td class="py-4 px-6">50–53" &middot; 127–135 cm</td>
+              <td class="py-4 px-6">78 cm</td>
+              <td class="py-4 px-6">68 cm</td>
+              <td class="py-4 px-6">Maximalist architectural silhouette</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Brand Story Block -->
+  <section id="brand-story" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <span class="text-xs font-mono uppercase tracking-widest text-doberman-rust block">
+          Editorial Manifesto
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-editorial font-bold text-white tracking-tight leading-tight">
+          Rejecting the Cliché. <br />
+          Honoring the Devotion.
+        </h2>
+        <p class="text-base text-atelier-300 leading-relaxed">
+          For decades, large dog breeds—the Doberman Pinscher, the Cane Corso, the Great Dane, the Mastiff—have been burdened with cartoonish aggression in popular culture: heavy barbed-wire graphics, spiked chains, and snarling tropes.
+        </p>
+        <p class="text-sm text-atelier-400 leading-relaxed">
+          Anyone who has had the privilege of sharing their life with one of these magnificent animals knows the reality: unwavering loyalty, affectionate warmth, aristocratic elegance, and deeply gentle companionship.
+        </p>
+        <p class="text-sm text-atelier-400 leading-relaxed">
+          <strong class="text-white">CANIS NOBILE</strong> was founded in the United Kingdom to create the uniform that owners actually deserve: garments made with the dignity, architectural strength, and restraint of the animals that inspire them.
+        </p>
+
+        <div class="pt-4 flex items-center space-x-6 text-xs font-mono uppercase tracking-widest text-atelier-300">
+          <span class="flex items-center space-x-2">
+            <span class="w-2 h-2 bg-doberman-rust inline-block"></span>
+            <span>Ethical UK Milling</span>
+          </span>
+          <span class="flex items-center space-x-2">
+            <span class="w-2 h-2 bg-doberman-tan inline-block"></span>
+            <span>Zero Plastic Inks</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Visual Story Imagery -->
+      <div class="relative">
+        <div class="aspect-[4/5] bg-atelier-900 border border-atelier-800 overflow-hidden shadow-2xl">
+          <picture>
+            <source
+              srcset="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80"
+              media="(min-width: 768px)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80"
+              alt="Handler with Doberman walking through British mist"
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover filter contrast-110 grayscale hover:grayscale-0 transition-all duration-700"
+            />
+          </picture>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-atelier-950 border border-atelier-800 p-6 hidden sm:block max-w-xs shadow-xl">
+          <span class="text-[11px] font-mono uppercase tracking-widest text-doberman-tan block mb-1">
+            Heritage Commitment
+          </span>
+          <p class="text-xs text-atelier-300">
+            Every garment carries a tonal woven label verifying its British mill batch and individual hand-inspection.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="border-t border-atelier-800 bg-atelier-900/60 py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <span class="text-xs font-mono uppercase tracking-widest text-atelier-400 block mb-3">
+        Complimentary UK Courier On Demand
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-editorial font-bold text-white mb-6">
+        Dress for the Walk. Stand with the Giants.
+      </h2>
+      <a
+        href="#collection"
+        class="inline-block px-10 py-4 bg-white hover:bg-doberman-bone text-atelier-950 font-mono text-xs uppercase tracking-widest font-semibold transition-all shadow-md"
+      >
+        View Available Garments
+      </a>
+    </div>
+  </section>
+</BaseLayout>

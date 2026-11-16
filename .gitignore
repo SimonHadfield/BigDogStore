@@ -1,0 +1,11 @@
+# Logs & Build Artifacts
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+
+# OS Metadata
+.DS_Store
+Thumbs.db
