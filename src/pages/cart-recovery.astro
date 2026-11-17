@@ -1,89 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getProductBySlug, PRODUCTS } from '../data/products';
+import { BRAND_CONFIG } from '../data/brand';
 
 const slug = Astro.url.searchParams.get('slug');
 const product = slug ? getProductBySlug(slug) : PRODUCTS[0];
 ---
 
 <BaseLayout
-  title="Your Selection is Reserved - Canis Nobile"
-  description="Return to your selected Canis Nobile garment or explore alternative sizing."
+  title={`Did Your Dog Step on the Keyboard? | ${BRAND_CONFIG.name}`}
+  description="Resume your checkout or check sizing for your Big Dog Club apparel."
 >
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-    <span class="text-xs font-mono uppercase tracking-widest text-atelier-400 block mb-2">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+    
+    <!-- Goofy Icon -->
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-sand-100 border border-sand-200 text-tan mb-6 shadow-sm">
+      <span class="text-3xl">🐾</span>
+    </div>
+
+    <span class="text-xs font-bold uppercase tracking-wider text-tan block mb-2">
       Checkout Paused
     </span>
-    <h1 class="text-3xl sm:text-5xl font-editorial font-bold text-white tracking-tight mb-4">
-      Your Silhouette Awaits.
+    <h1 class="text-3xl sm:text-5xl font-display font-bold text-espresso tracking-tight mb-4">
+      Did a 40kg Paw Distract You?
     </h1>
 
-    <p class="text-sm sm:text-base text-atelier-300 leading-relaxed max-w-xl mx-auto mb-10">
-      Your checkout was not completed. We've preserved your session details. If you have questions about sizing, fabric weights, or delivery to your UK postcode, our team is at your service.
+    <p class="text-base text-espresso-700 leading-relaxed max-w-xl mx-auto mb-8">
+      We totally get it—demands for immediate tummy scratches take priority over online shopping. Your cart is safe and waiting whenever you're ready.
     </p>
 
     {product && (
-      <div class="p-6 bg-atelier-900/60 border border-atelier-800 text-left flex flex-col sm:flex-row items-center gap-6 mb-10">
-        <div class="w-24 h-28 flex-shrink-0 bg-atelier-850 overflow-hidden">
+      <div class="p-6 bg-sand-100 border border-sand-200 rounded-3xl text-left flex flex-col sm:flex-row items-center gap-6 mb-8 shadow-sm">
+        <div class="w-24 h-28 flex-shrink-0 bg-sand-200 rounded-2xl overflow-hidden">
           <img
             src={product.images.primary}
             alt={product.title}
             width="120"
             height="150"
-            class="w-full h-full object-cover grayscale"
+            class="w-full h-full object-cover"
           />
         </div>
         <div class="flex-grow">
-          <span class="text-[10px] font-mono text-doberman-tan uppercase block mb-1">
-            Recently Selected Garment
+          <span class="text-[11px] font-bold text-tan uppercase block mb-1">
+            Reserved In Your Size
           </span>
-          <h2 class="text-lg font-editorial font-bold text-white mb-1">
+          <h2 class="text-lg font-display font-bold text-espresso mb-1">
             {product.title}
           </h2>
-          <p class="text-xs text-atelier-400 font-mono mb-2">
-            £{product.price}.00 &middot; {product.specs.weight}
+          <p class="text-xs text-espresso-600 mb-2">
+            £{product.price}.00 &bull; {product.specs.weight} &bull; Small-Batch UK Hand-Check
           </p>
           <a
             href={`/products/${product.slug}`}
-            class="inline-block text-xs font-mono text-white underline hover:text-doberman-tan"
+            class="inline-block text-xs font-bold text-tan hover:text-tan-dark underline"
           >
-            Resume Order for {product.title} &rarr;
+            Hop Back & Finish Order &rarr;
           </a>
         </div>
       </div>
     )}
 
-    <!-- Reassurance Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left font-mono text-xs mb-10">
-      <div class="p-4 bg-atelier-950 border border-atelier-850">
-        <span class="text-white font-semibold block mb-1">Hassle-Free Returns</span>
-        <span class="text-atelier-400 text-[11px]">30-day trial period on all unworn UK garments.</span>
-      </div>
-      <div class="p-4 bg-atelier-950 border border-atelier-850">
-        <span class="text-white font-semibold block mb-1">Royal Mail 24</span>
-        <span class="text-atelier-400 text-[11px]">Tracked and insured door-to-door delivery.</span>
-      </div>
-      <div class="p-4 bg-atelier-950 border border-atelier-850">
-        <span class="text-white font-semibold block mb-1">Fit Advisory</span>
-        <span class="text-atelier-400 text-[11px]">Reach our atelier team anytime at atelier@canisnobile.co.uk</span>
-      </div>
+    <div class="p-4 bg-cream-100 rounded-2xl border border-sand-200 text-xs text-espresso-600 max-w-md mx-auto mb-8">
+      💡 <strong>Need sizing reassurance?</strong> Our garments are roomy and dropped-shoulder so you have plenty of cuddle room without feeling restricted.
     </div>
 
-    <!-- Actions -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      {product && (
-        <a
-          href={`/products/${product.slug}`}
-          class="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-doberman-bone text-atelier-950 font-mono text-xs uppercase tracking-widest font-semibold transition-all"
-        >
-          Complete Your Order
-        </a>
-      )}
+      <a
+        href={product ? `/products/${product.slug}` : '/'}
+        class="w-full sm:w-auto px-8 py-3.5 bg-tan hover:bg-tan-dark text-white font-bold text-xs uppercase tracking-wider rounded-full transition-colors shadow-sm"
+      >
+        Complete My Order &rarr;
+      </a>
       <a
         href="/"
-        class="w-full sm:w-auto px-8 py-3.5 border border-atelier-750 hover:border-white text-white font-mono text-xs uppercase tracking-widest transition-all"
+        class="w-full sm:w-auto px-6 py-3.5 bg-sand-100 hover:bg-sand-200 border border-sand-200 text-espresso font-bold text-xs uppercase tracking-wider rounded-full transition-colors"
       >
-        Explore All Garments
+        Browse Full Drop
       </a>
     </div>
   </main>

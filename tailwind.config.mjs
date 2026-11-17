@@ -4,40 +4,59 @@ export default {
   theme: {
     extend: {
       colors: {
-        atelier: {
-          950: '#0a0a0a',
-          900: '#121212',
-          850: '#181818',
-          800: '#222222',
-          700: '#333333',
-          400: '#8c8c8c',
-          200: '#d1d1d1',
-          100: '#ebebeb',
-          50: '#f8f8f8',
+        cream: {
+          50: '#FDFBF7',
+          100: '#FAF6F0', // Warm Cream primary background
+          200: '#F5EFE6',
+          300: '#EBDDCC',
         },
-        doberman: {
-          rust: '#993d20',
-          tan: '#c47343',
-          onyx: '#0d0d0f',
-          bone: '#f3ede2',
-        }
+        sand: {
+          50: '#FAF7F2',
+          100: '#F2EAE0', // Soft Sand card background
+          200: '#E6D7C7',
+          300: '#D5BEA8',
+          400: '#C2A388',
+        },
+        espresso: {
+          DEFAULT: '#1E1B18', // Deep Espresso primary text
+          900: '#1E1B18',
+          800: '#2E2A25',
+          700: '#423D35',
+          600: '#5C554B',
+          500: '#7A7265',
+          400: '#9E9484',
+          300: '#C4BCB0',
+        },
+        tan: {
+          DEFAULT: '#D97736', // Doberman Tan primary buttons/badges
+          dark: '#B85E22',
+          light: '#F49E63',
+          faint: '#FDF3EB',
+        },
+        sage: {
+          DEFAULT: '#4A7C59', // Sage/Matcha secondary accents
+          dark: '#385F44',
+          light: '#659C76',
+          faint: '#EEF5F0',
+        },
+        butter: '#FBF3D5',
       },
       fontFamily: {
+        display: [
+          '"Fraunces"',
+          'ui-serif',
+          'Georgia',
+          'Cambria',
+          'serif',
+        ],
         sans: [
+          '"Plus Jakarta Sans"',
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
           '"Segoe UI"',
           'Roboto',
           'sans-serif',
-        ],
-        editorial: [
-          'ui-serif',
-          'Georgia',
-          'Cambria',
-          '"Times New Roman"',
-          'Times',
-          'serif',
         ],
         mono: [
           'ui-monospace',
@@ -48,11 +67,7 @@ export default {
           'monospace',
         ],
       },
-      letterSpacing: {
-        widest: '.2em',
-        ultra: '.3em',
-      }
     },
   },
   plugins: [],
-};
+}

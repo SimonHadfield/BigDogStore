@@ -1,4 +1,14 @@
 ---
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/600.css';
+import '@fontsource/fraunces/700.css';
+import '@fontsource/fraunces/400-italic.css';
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/500.css';
+import '@fontsource/plus-jakarta-sans/600.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+import { BRAND_CONFIG } from '../data/brand';
+
 interface Props {
   title: string;
   description: string;
@@ -13,12 +23,12 @@ const {
   canonical = Astro.url.href,
 } = Astro.props;
 
-const siteName = 'CANIS NOBILE UK | High-End Streetwear for Gentle Giants';
+const siteName = `${BRAND_CONFIG.name} UK | Casual Streetwear for Big Dog Owners`;
 const fullTitle = `${title} | ${siteName}`;
 ---
 
 <!doctype html>
-<html lang="en-GB" class="scroll-smooth bg-atelier-950 text-atelier-100 antialiased selection:bg-doberman-rust selection:text-white">
+<html lang="en-GB" class="scroll-smooth bg-cream-100 text-espresso antialiased selection:bg-tan selection:text-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,7 +40,7 @@ const fullTitle = `${title} | ${siteName}`;
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#FAF6F0" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -39,7 +49,7 @@ const fullTitle = `${title} | ${siteName}`;
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:locale" content="en_GB" />
-    <meta property="og:site_name" content="Canis Nobile" />
+    <meta property="og:site_name" content={BRAND_CONFIG.name} />
 
     <!-- Twitter Cards -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -47,123 +57,117 @@ const fullTitle = `${title} | ${siteName}`;
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={image} />
-
-    <!-- Performance Prefetch -->
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   </head>
-  <body class="min-h-screen flex flex-col justify-between font-sans selection:bg-doberman-rust selection:text-white">
-    <!-- Announcement Banner -->
-    <div class="bg-atelier-900 border-b border-atelier-800 text-xs py-2 px-4 text-center tracking-widest uppercase font-mono text-atelier-400">
-      <span>Complimentary Tracked Royal Mail 24 on all UK orders over £75</span>
-    </div>
+  <body class="flex min-h-screen flex-col bg-cream-100 text-espresso font-sans">
+    
+    <!-- Top Announcement Bar: Relatable & Trust building -->
+    <aside aria-label="Announcement" class="bg-espresso text-cream-100 text-xs py-2.5 px-4 text-center tracking-wide font-medium border-b border-espresso-800">
+      <div class="max-w-7xl mx-auto flex items-center justify-center space-x-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-tan animate-pulse"></span>
+        <span>
+          <strong>Free UK Delivery on orders over £70</strong> &bull; Hand-checked in small batches &bull; 100% Dog-Hair Friendly Loopback Cotton
+        </span>
+      </div>
+    </aside>
 
-    <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-atelier-950/90 backdrop-blur-md border-b border-atelier-850">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <!-- Logo / Brand Title -->
-        <a href="/" class="flex flex-col group focus:outline-none focus:ring-1 focus:ring-doberman-rust p-1" aria-label="Canis Nobile Homepage">
-          <span class="text-xl sm:text-2xl font-editorial font-bold tracking-widest text-white group-hover:text-doberman-tan transition-colors">
-            CANIS NOBILE
-          </span>
-          <span class="text-[10px] tracking-ultra uppercase text-atelier-400 font-mono">
-            Atelier UK &middot; Gentle Giants
-          </span>
-        </a>
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-cream-100/90 backdrop-blur-md border-b border-sand-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          
+          <!-- Brand Wordmark -->
+          <a href="/" class="group flex items-center space-x-2 text-espresso hover:opacity-90 transition-opacity">
+            <span class="text-2xl sm:text-3xl font-display font-bold tracking-tight text-espresso">
+              {BRAND_CONFIG.name}
+            </span>
+            <span class="inline-block px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-tan text-white rounded-full">
+              Club
+            </span>
+          </a>
 
-        <!-- Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-8 text-xs font-mono tracking-widest uppercase text-atelier-200" aria-label="Primary Navigation">
-          <a href="/#collection" class="hover:text-white transition-colors py-1 border-b border-transparent hover:border-doberman-rust">
-            Apparel Collection
-          </a>
-          <a href="/#size-guide" class="hover:text-white transition-colors py-1 border-b border-transparent hover:border-doberman-rust">
-            Size & Fit Guide
-          </a>
-          <a href="/#brand-story" class="hover:text-white transition-colors py-1 border-b border-transparent hover:border-doberman-rust">
-            The Philosophy
-          </a>
-        </nav>
+          <!-- Nav Items -->
+          <nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-8 text-sm font-semibold text-espresso-700">
+            <a href="/#collection" class="hover:text-tan transition-colors">The Drop</a>
+            <a href="/#fit-guide" class="hover:text-tan transition-colors">Sizing Matrix</a>
+            <a href="/#about" class="hover:text-tan transition-colors">Why Big Dogs?</a>
+            <a href="/#batch-info" class="hover:text-tan transition-colors">Batch Quality</a>
+          </nav>
 
-        <!-- Header Actions / Direct Contact -->
-        <div class="flex items-center space-x-4">
-          <a
-            href="/#collection"
-            class="inline-flex items-center justify-center px-4 py-2 border border-atelier-700 hover:border-doberman-tan text-xs font-mono uppercase tracking-widest text-white bg-atelier-900 hover:bg-atelier-850 transition-all focus:ring-2 focus:ring-doberman-rust focus:outline-none"
-          >
-            Shop Now
-          </a>
+          <!-- Right Call to Action -->
+          <div class="flex items-center space-x-4">
+            <a
+              href="/#collection"
+              class="inline-flex items-center justify-center px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-tan hover:bg-tan-dark rounded-full transition-all shadow-sm hover:shadow-md active:scale-95"
+            >
+              Shop The Drop
+            </a>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Page Content -->
     <main class="flex-grow">
       <slot />
     </main>
 
-    <!-- Semantic Editorial Footer -->
-    <footer class="bg-atelier-900 border-t border-atelier-800 text-atelier-400 mt-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
-        <!-- Column 1: Brand -->
-        <div class="space-y-4 md:col-span-1">
-          <span class="text-lg font-editorial font-bold text-white tracking-widest block">
-            CANIS NOBILE
-          </span>
-          <p class="text-xs leading-relaxed text-atelier-400">
-            Architectural British streetwear honoring the poise, majesty, and gentle nature of big dog breeds. From Dobermans to Wolfhounds, crafted without intimidation.
-          </p>
-          <div class="text-[11px] font-mono text-atelier-400 pt-2">
-            UNITED KINGDOM &middot; EST. 2024
+    <!-- Warm, Playful Footer -->
+    <footer class="bg-sand-100 border-t border-sand-200 text-espresso-700 text-sm mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="space-y-4 md:col-span-2">
+            <div class="flex items-center space-x-2">
+              <span class="text-2xl font-display font-bold text-espresso">{BRAND_CONFIG.name}</span>
+              <span class="text-xs px-2 py-0.5 bg-sage text-white rounded-full font-bold">UK</span>
+            </div>
+            <p class="text-espresso-600 max-w-sm leading-relaxed">
+              Streetwear inspired by clumsy 40kg lapdogs, couch hogs, and gentle giants who think they can hide behind lampposts. Designed with love and heavy cotton in the United Kingdom.
+            </p>
+            <div class="flex items-center space-x-4 text-xs font-semibold text-espresso-600 pt-2">
+              <span class="flex items-center gap-1.5">
+                <span class="text-base">🐾</span> Tested by real lap-dogs
+              </span>
+              <span class="flex items-center gap-1.5">
+                <span class="text-base">🇬🇧</span> Small-batch UK prints
+              </span>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-espresso">Navigation</h4>
+            <ul class="space-y-2 text-sm text-espresso-600">
+              <li><a href="/#collection" class="hover:text-tan transition-colors">Current Drop</a></li>
+              <li><a href="/#fit-guide" class="hover:text-tan transition-colors">Sizing Matrix (S–XXL)</a></li>
+              <li><a href="/#about" class="hover:text-tan transition-colors">The Velcro Dog Manifesto</a></li>
+              <li><a href="/#batch-info" class="hover:text-tan transition-colors">Small-Batch Quality Check</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Trust & Payments -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-espresso">Checkout & Support</h4>
+            <p class="text-xs text-espresso-600 leading-relaxed">
+              Bank-grade 256-bit SSL encryption via Stripe. Exclusive Royal Mail Tracked 24 fulfillment across the United Kingdom.
+            </p>
+            <div class="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-sand-200 rounded-lg text-xs font-semibold text-espresso">
+              <span>🔒 Direct UK Stripe Checkout</span>
+            </div>
+            <p class="text-xs text-espresso-500 pt-2">
+              Questions? Say hi at <a href={`mailto:${BRAND_CONFIG.contactEmail}`} class="underline hover:text-tan">{BRAND_CONFIG.contactEmail}</a>
+            </p>
           </div>
         </div>
 
-        <!-- Column 2: Navigation -->
-        <div class="space-y-3">
-          <p class="text-xs font-mono uppercase tracking-widest text-white font-semibold">
-            Collection
-          </p>
-          <ul class="space-y-2 text-xs font-mono">
-            <li><a href="/products/nobile-heavyweight-hoodie" class="hover:text-white transition-colors">480GSM Hoodies</a></li>
-            <li><a href="/products/gentle-giant-oversized-tee" class="hover:text-white transition-colors">280GSM Boxy Tees</a></li>
-            <li><a href="/products/atelier-handler-chore-jacket" class="hover:text-white transition-colors">Heavyweight Chore Jackets</a></li>
-            <li><a href="/products/corso-heavy-fleece-pant" class="hover:text-white transition-colors">Architectural Sweatpants</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Handlers & Sizing -->
-        <div class="space-y-3">
-          <p class="text-xs font-mono uppercase tracking-widest text-white font-semibold">
-            Handler Guidance
-          </p>
-          <ul class="space-y-2 text-xs font-mono">
-            <li><a href="/#size-guide" class="hover:text-white transition-colors">Handler & Canine Fit Guide</a></li>
-            <li><a href="/#brand-story" class="hover:text-white transition-colors">British Loopback Craftsmanship</a></li>
-            <li><span class="text-atelier-400">Complimentary Royal Mail 24</span></li>
-            <li><span class="text-atelier-400">30-Day UK Hassle-Free Returns</span></li>
-          </ul>
-        </div>
-
-        <!-- Column 4: Newsletter / Security -->
-        <div class="space-y-3">
-          <p class="text-xs font-mono uppercase tracking-widest text-white font-semibold">
-            Payment & Integrity
-          </p>
-          <p class="text-xs leading-relaxed">
-            Direct 256-bit encrypted checkout via Stripe. All orders dispatched from our Midlands atelier with carbon-neutral logistics.
-          </p>
-          <div class="flex items-center space-x-2 pt-2 text-[11px] font-mono text-atelier-400">
-            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>PCI-DSS Level 1 Encrypted</span>
+        <div class="border-t border-sand-200 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-espresso-500 gap-4">
+          <p>&copy; {new Date().getFullYear()} {BRAND_CONFIG.name} Ltd. All paws reserved. Registered in the UK.</p>
+          <div class="flex space-x-6">
+            <span class="hover:text-espresso transition-colors">Terms of Service</span>
+            <span class="hover:text-espresso transition-colors">Privacy Policy</span>
+            <span class="hover:text-espresso transition-colors">UK Returns & Exchanges</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Copyright Bar -->
-      <div class="border-t border-atelier-850 py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-atelier-400 gap-4">
-        <p>&copy; {new Date().getFullYear()} CANIS NOBILE ATELIER UK. All rights reserved.</p>
-        <div class="flex space-x-6 text-[11px]">
-          <span>Privacy Policy</span>
-          <span>Terms of Service</span>
-          <span>Security Headers A+ Verified</span>
         </div>
       </div>
     </footer>
