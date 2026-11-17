@@ -1,0 +1,82 @@
+---
+interface Props {
+  color?: string; // hex
+  label?: string;
+  badge?: string;
+  hoodieColorName?: string;
+  class?: string;
+}
+
+const {
+  color = '#1A1614',
+  label = '480GSM Heavyweight Loopback',
+  badge = 'Drop 01 Exclusive',
+  hoodieColorName = 'Obsidian Bark',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`relative aspect-[4/5] bg-canvas-periwinkle/30 border-2 border-ink rounded-2xl p-6 flex flex-col justify-between overflow-hidden shadow-inner ${className}`}>
+  <!-- Background retro graphic dots -->
+  <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#1A1614 1.5px, transparent 1.5px); background-size: 16px 16px;"></div>
+
+  <!-- Top Mockup Badge Bar -->
+  <div class="relative z-10 flex items-center justify-between">
+    <span class="px-2.5 py-1 bg-mint text-ink font-display text-[11px] font-bold rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-3">
+      {badge}
+    </span>
+    <span class="px-2 py-0.5 bg-card-vanilla border-2 border-ink rounded-md text-[10px] font-mono font-bold text-ink shadow-brutal-sm">
+      480 GSM
+    </span>
+  </div>
+
+  <!-- Center: Stylized Vector Hoodie Graphic Mockup -->
+  <div class="relative z-10 my-auto flex flex-col items-center justify-center py-4">
+    <div class="relative w-44 h-48 sm:w-52 sm:h-56 transition-transform hover:scale-105 duration-300">
+      <svg viewBox="0 0 200 220" class="w-full h-full drop-shadow-[4px_4px_0px_#1A1614]">
+        <!-- Hoodie Body -->
+        <path
+          d="M 50 70 L 25 105 L 45 125 L 55 105 L 55 195 L 145 195 L 145 105 L 155 125 L 175 105 L 150 70 L 130 50 C 130 65 70 65 70 50 Z"
+          fill={color}
+          stroke="#1A1614"
+          stroke-width="4"
+          stroke-linejoin="round"
+        />
+        <!-- Hood Cross Detail -->
+        <path
+          d="M 70 50 C 70 20 130 20 130 50 C 120 70 80 70 70 50 Z"
+          fill={color}
+          stroke="#1A1614"
+          stroke-width="4"
+          stroke-linejoin="round"
+        />
+        <!-- Kangaroo Pocket -->
+        <path
+          d="M 65 140 L 75 125 L 125 125 L 135 140 L 135 185 L 65 185 Z"
+          fill="#1A1614"
+          fill-opacity="0.15"
+          stroke="#1A1614"
+          stroke-width="3"
+          stroke-linejoin="round"
+        />
+        <!-- Chest Graphic Badge: Retro Paw & Typography -->
+        <circle cx="100" cy="98" r="18" fill="#FFFDF7" stroke="#1A1614" stroke-width="2.5" />
+        <ellipse cx="100" cy="102" rx="7" ry="5.5" fill="#E06D3B" />
+        <ellipse cx="94" cy="93" rx="2.5" ry="3.5" fill="#E06D3B" />
+        <ellipse cx="106" cy="93" rx="2.5" ry="3.5" fill="#E06D3B" />
+        <ellipse cx="89" cy="97" rx="2" ry="3" fill="#E06D3B" />
+        <ellipse cx="111" cy="97" rx="2" ry="3" fill="#E06D3B" />
+        <!-- Bottom Hem & Cuffs -->
+        <line x1="55" y1="185" x2="145" y2="185" stroke="#1A1614" stroke-width="3" />
+        <line x1="28" y1="108" x2="43" y2="123" stroke="#1A1614" stroke-width="3" />
+        <line x1="172" y1="108" x2="157" y2="123" stroke="#1A1614" stroke-width="3" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Bottom Details Label -->
+  <div class="relative z-10 flex items-center justify-between pt-2 border-t-2 border-ink">
+    <span class="text-xs font-bold text-ink">{hoodieColorName}</span>
+    <span class="text-[11px] font-mono text-ink-light">{label}</span>
+  </div>
+</div>

@@ -2,412 +2,237 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { PRODUCTS } from '../data/products';
 import { BRAND_CONFIG } from '../data/brand';
+import HoodieMockup from '../components/HoodieMockup.astro';
 
-const featuredProducts = PRODUCTS;
+// If WAITLIST_MODE is false, render the full storefront
+const isWaitlist = BRAND_CONFIG.WAITLIST_MODE;
 const heroProduct = PRODUCTS[0];
 ---
 
-<BaseLayout
-  title={`${BRAND_CONFIG.name} | Streetwear for Owners of 40kg Lapdogs`}
-  description="Warm, casual, slightly goofy streetwear crafted for big dog lovers. Featuring 480GSM loopback cotton, small-batch hand checks, and designs made for clumsy affectionate giants."
->
-  <!-- Hero Section: Bright Two-Column Layout on Warm Cream -->
-  <section class="relative bg-cream-100 border-b border-sand-200 overflow-hidden">
-    <!-- Subtle playful decorative circles in the background -->
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-sand-100 rounded-full blur-3xl opacity-70 pointer-events-none"></div>
-    <div class="absolute top-1/2 -right-20 w-80 h-80 bg-tan-faint rounded-full blur-2xl opacity-60 pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+{isWaitlist ? (
+  <BaseLayout
+    title={`${BRAND_CONFIG.name} | Retro Streetwear for Clumsy Giants`}
+    description="Drop 01 Coming Soon. Heavyweight 480GSM hoodies and retro streetwear inspired by 40kg lapdogs, clumsy paws, and personal space violations. Join the waitlist for early pack access."
+  >
+    <!-- Waitlist Hero Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Left Column: Bold Playful Headline + Shop the Drop Button -->
-        <div class="lg:col-span-7 space-y-8 text-left">
+        <!-- Left: Bold Playful Copy + Email Signup Form -->
+        <div class="lg:col-span-7 space-y-6">
           
-          <!-- Playful Badge -->
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-sand-100 border border-sand-200 rounded-full shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-tan"></span>
-            <span class="text-xs font-bold uppercase tracking-wider text-espresso">
-              Dedicated to Clumsy Gentle Giants
+          <!-- Fun Neo-brutalist Sticker Badge Row -->
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="px-3 py-1 bg-mint text-ink text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-2">
+              🐾 Drop 01 Coming Soon
             </span>
-            <span class="text-xs bg-tan text-white font-bold px-2 py-0.5 rounded-full">Drop 01</span>
+            <span class="px-3 py-1 bg-card-vanilla text-ink text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform rotate-1">
+              🇬🇧 UK Hand-Checked
+            </span>
+            <span class="px-3 py-1 bg-rust text-white text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-1">
+              480GSM Heavyweight
+            </span>
           </div>
 
-          <!-- Headline -->
-          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-bold text-espresso tracking-tight leading-[1.08]">
-            {BRAND_CONFIG.heroHeadline} <br />
-            <span class="text-tan underline decoration-tan-light/50 decoration-wavy decoration-2">
-              {BRAND_CONFIG.heroHighlight}
+          <!-- Bold Groovy Headline -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-bold text-ink tracking-tight leading-[1.05]">
+            Streetwear for humans owned by <br />
+            <span class="inline-block px-3 py-1 bg-card-vanilla border-2 border-ink shadow-brutal rounded-2xl text-rust transform -rotate-1 mt-2">
+              40kg clumsy giants.
             </span>
           </h1>
 
-          <!-- Body Copy -->
-          <p class="text-lg sm:text-xl text-espresso-600 max-w-xl leading-relaxed">
-            {BRAND_CONFIG.heroSubheadline}
+          <!-- Body Subtext -->
+          <p class="text-base sm:text-lg text-ink font-medium leading-relaxed max-w-xl">
+            {BRAND_CONFIG.heroSubheadline} We're preparing our first limited micro-batch of loopback hoodies and vintage boxy tees.
           </p>
 
-          <!-- Primary Actions -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <!-- Email Signup Form Card (Neo-Brutalist) -->
+          <div id="waitlist" class="bg-card-vanilla border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg max-w-xl space-y-4">
+            <div>
+              <span class="text-xs font-display font-bold uppercase tracking-wider text-rust block mb-1">
+                Join The Pack Early Access
+              </span>
+              <h3 class="text-2xl font-display font-bold text-ink">
+                Get first dibs on Drop 01
+              </h3>
+              <p class="text-xs text-ink-light font-medium mt-1">
+                Zero spam. Only launch notifications, secret pack discounts, and clumsy dog memes.
+              </p>
+            </div>
+
+            <form id="waitlist-form" class="space-y-3">
+              <div class="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  name="email"
+                  id="waitlist-email"
+                  required
+                  placeholder="enter.your@email.co.uk"
+                  class="flex-grow px-4 py-3.5 bg-canvas-butter/20 border-2 border-ink rounded-xl text-sm font-bold text-ink placeholder:text-ink-light/60 focus:outline-none focus:ring-2 focus:ring-rust"
+                />
+                <button
+                  type="submit"
+                  id="waitlist-submit"
+                  class="px-6 py-3.5 bg-rust hover:bg-rust-dark text-card-vanilla font-display font-bold text-sm uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center justify-center space-x-2"
+                >
+                  <span>Bark At Me!</span>
+                  <span>🐾</span>
+                </button>
+              </div>
+
+              <!-- Live Status Message Container -->
+              <div id="waitlist-status" class="hidden text-xs font-bold p-3 rounded-xl border-2 border-ink transition-all"></div>
+            </form>
+
+            <div class="flex items-center space-x-3 text-[11px] font-bold text-ink-light pt-1">
+              <span>🔒 100% spam-free guarantee</span>
+              <span>&bull;</span>
+              <span>🇬🇧 UK micro-batch release</span>
+            </div>
+          </div>
+
+          <!-- Quick Preview Store Link -->
+          <div class="pt-2">
             <a
-              href="#collection"
-              class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-tan hover:bg-tan-dark rounded-full transition-all shadow-md hover:shadow-lg active:scale-95 text-center"
+              href="/shop"
+              class="inline-flex items-center text-xs font-display font-bold uppercase tracking-wider text-ink underline decoration-2 decoration-rust underline-offset-4 hover:text-rust"
             >
-              Shop The Drop &darr;
-            </a>
-            <a
-              href="#about"
-              class="inline-flex items-center justify-center px-6 py-4 text-sm font-bold text-espresso-700 bg-sand-100 hover:bg-sand-200 border border-sand-200 rounded-full transition-colors text-center"
-            >
-              Read The Velcro Dog Story
+              👀 Want to peek at the full collection now? Browse the store preview &rarr;
             </a>
           </div>
 
-          <!-- Micro reassurance -->
-          <div class="flex flex-wrap items-center gap-6 pt-4 text-xs font-semibold text-espresso-600">
-            <span class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-sage" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              No aggressive clichés
-            </span>
-            <span class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-sage" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Claw & slobber resistant
-            </span>
-            <span class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-sage" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Small-batch UK checks
-            </span>
-          </div>
         </div>
 
-        <!-- Right Column: Clean Product Showcase Card (Light, warm, no dark moody overlays) -->
+        <!-- Right: Drop 01 Teaser Preview Card with Hoodie Mockup -->
         <div class="lg:col-span-5">
-          <div class="relative bg-sand-100 border-2 border-sand-200 rounded-3xl p-6 shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
+          <div class="bg-card-vanilla border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl relative transform rotate-1 hover:rotate-0 transition-transform duration-300">
             
-            <!-- Fun Badge Stamp -->
-            <div class="absolute -top-4 -right-4 bg-tan text-white font-display text-xs font-bold px-3 py-1.5 rounded-full shadow-md tracking-wider uppercase transform rotate-6">
-              Drop 01 Hero
+            <!-- Corner Sticker -->
+            <div class="absolute -top-4 -right-3 z-20 px-3 py-1.5 bg-canvas-butter text-ink font-display text-xs font-bold uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal-sm transform rotate-6">
+              Drop 01 Star
             </div>
 
-            <!-- Product Image -->
-            <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-sand-200 relative mb-5">
-              <picture>
-                <source
-                  srcset={heroProduct.images.primary}
-                  media="(min-width: 640px)"
-                />
-                <img
-                  src={heroProduct.images.primary}
-                  alt={heroProduct.title}
-                  width="800"
-                  height="1000"
-                  loading="eager"
-                  decoding="async"
-                  class="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500"
-                />
-              </picture>
-              <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-espresso shadow-sm">
-                🐾 Heavyweight 480GSM Loopback
-              </div>
-            </div>
+            <!-- Vector Mockup Component Slot -->
+            <HoodieMockup
+              color="#1A1614"
+              label="480GSM French Loopback Fleece"
+              badge="Drop 01 Hero"
+              hoodieColorName="Obsidian Bark"
+              class="mb-6"
+            />
 
-            <!-- Showcase Details -->
+            <!-- Teaser Details -->
             <div class="space-y-3">
               <div class="flex items-center justify-between">
-                <h3 class="text-xl font-display font-bold text-espresso">
-                  {heroProduct.title}
+                <h3 class="text-xl font-display font-bold text-ink">
+                  Personal Space Violator Hoodie
                 </h3>
-                <span class="text-xl font-bold text-tan">
-                  £{heroProduct.price}
+                <span class="text-xl font-display font-bold text-rust">
+                  £95
                 </span>
               </div>
-              <p class="text-xs text-espresso-600 line-clamp-2">
-                {heroProduct.description}
-              </p>
-              
-              <!-- Quote chip -->
-              <div class="p-2.5 bg-cream-100 rounded-xl border border-sand-200 text-xs italic text-espresso-700">
-                {heroProduct.goofyQuote}
-              </div>
-
-              <a
-                href={`/products/${heroProduct.slug}`}
-                class="block w-full text-center py-3 px-4 bg-espresso text-cream-100 font-bold rounded-xl hover:bg-tan transition-colors text-sm shadow-sm"
-              >
-                Snag This Hoodie &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Bar: Honest, Relatable Badges -->
-  <section class="bg-sand-100 border-b border-sand-200 py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        
-        <div class="flex flex-col items-center space-y-1">
-          <span class="text-2xl">🐕</span>
-          <span class="text-xs font-bold text-espresso uppercase tracking-wider">Heavyweight & Fur-Friendly</span>
-          <span class="text-[11px] text-espresso-600">Tight loopback yarn that easily brushes clean</span>
-        </div>
-
-        <div class="flex flex-col items-center space-y-1">
-          <span class="text-2xl">🔍</span>
-          <span class="text-xs font-bold text-espresso uppercase tracking-wider">Hand-Checked in the UK</span>
-          <span class="text-[11px] text-espresso-600">Every print inspected before dispatch (5–7 days)</span>
-        </div>
-
-        <div class="flex flex-col items-center space-y-1">
-          <span class="text-2xl">📦</span>
-          <span class="text-xs font-bold text-espresso uppercase tracking-wider">Small-Batch Drops</span>
-          <span class="text-[11px] text-espresso-600">Zero mass waste, strictly limited runs</span>
-        </div>
-
-        <div class="flex flex-col items-center space-y-1">
-          <span class="text-2xl">🛋️</span>
-          <span class="text-xs font-bold text-espresso uppercase tracking-wider">Couch Tested</span>
-          <span class="text-[11px] text-espresso-600">Durable against 40kg paws and sofa zoomies</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Collection Grid Section -->
-  <section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-sand-200 pb-6">
-      <div>
-        <div class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-tan mb-2">
-          <span>🐾 Current Edition</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-display font-bold text-espresso tracking-tight">
-          The Big Dog Streetwear Drop
-        </h2>
-      </div>
-      <p class="text-sm text-espresso-600 max-w-md mt-4 md:mt-0 leading-relaxed">
-        Ultra-heavyweight hoodies, boxy vintage tees, and rugged canvas shirts. Made to survive 40kg cuddle sessions and UK park rain.
-      </p>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {featuredProducts.map((product) => (
-        <article class="group bg-sand-100 border border-sand-200 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-tan transition-all shadow-sm hover:shadow-md">
-          <div>
-            <!-- Product Card Image -->
-            <div class="aspect-[4/5] bg-sand-200 relative overflow-hidden">
-              {product.badge && (
-                <span class="absolute top-3 left-3 z-10 px-2.5 py-1 bg-tan text-white text-[11px] font-bold rounded-full shadow-sm tracking-wide">
-                  {product.badge}
-                </span>
-              )}
-              <picture>
-                <img
-                  src={product.images.primary}
-                  alt={product.images.alt}
-                  width="600"
-                  height="750"
-                  loading="lazy"
-                  decoding="async"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </picture>
-            </div>
-
-            <!-- Content -->
-            <div class="p-5 space-y-3">
-              <div class="flex items-center justify-between text-xs text-espresso-600">
-                <span class="font-bold text-sage">{product.specs.weight}</span>
-                <span class="font-mono">{product.sku}</span>
-              </div>
-
-              <h3 class="text-lg font-display font-bold text-espresso group-hover:text-tan transition-colors">
-                <a href={`/products/${product.slug}`} class="focus:outline-none">
-                  {product.title}
-                </a>
-              </h3>
-
-              <p class="text-xs text-espresso-600 line-clamp-2 leading-relaxed">
-                {product.subtitle}
+              <p class="text-xs text-ink-light font-medium leading-relaxed">
+                480GSM heavyweight loopback cotton built for 40kg lapdogs who rest their heavy chins directly on your chest the moment you sit down.
               </p>
 
-              <!-- Relatable Goofy Quote -->
-              {product.goofyQuote && (
-                <p class="text-[11px] italic text-tan-dark bg-cream-100 p-2 rounded-lg border border-sand-200">
-                  {product.goofyQuote}
-                </p>
-              )}
-            </div>
-          </div>
+              <!-- Playful Quote Sticker -->
+              <div class="p-3 bg-canvas-butter/40 border-2 border-ink rounded-xl text-xs font-bold text-ink italic">
+                🐾 "If I fits, I sits. And even if I don't fits, I still sits on your lap."
+              </div>
 
-          <!-- Bottom Price & CTA -->
-          <div class="p-5 pt-0">
-            <div class="flex items-center justify-between pt-3 border-t border-sand-200">
-              <span class="text-lg font-display font-bold text-espresso">
-                £{product.price}.00
-              </span>
+              <!-- Button linking to product preview -->
               <a
-                href={`/products/${product.slug}`}
-                class="px-4 py-2 bg-espresso text-cream-100 hover:bg-tan text-xs font-bold uppercase tracking-wider rounded-full transition-colors"
-                aria-label={`View ${product.title}`}
+                href="/products/nobile-heavyweight-hoodie"
+                class="block w-full text-center py-3.5 px-4 bg-ink hover:bg-rust text-card-vanilla font-display font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all mt-4"
               >
-                View Piece &rarr;
+                Inspect Piece Specs &rarr;
               </a>
             </div>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
 
-  <!-- Small-Batch Fulfillment & Quality Check Section -->
-  <section id="batch-info" class="bg-sand-100 border-y border-sand-200 py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-cream-100 border border-sand-200 rounded-3xl p-8 sm:p-12 shadow-sm text-center">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Playful Badges Bar -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         
-        <div class="inline-flex items-center space-x-2 px-3 py-1 bg-sage-faint text-sage-dark font-bold text-xs uppercase tracking-wider rounded-full mb-4">
-          <span>🇬🇧 Small-Batch UK Craftsmanship</span>
+        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform -rotate-1 hover:rotate-0 transition-transform">
+          <span class="text-3xl mb-1 block">🛋️</span>
+          <span class="text-xs font-display font-bold text-ink uppercase block">Certified Couch Potato</span>
+          <span class="text-[11px] text-ink-light font-medium">Built for 40kg lap snuggles</span>
         </div>
 
-        <h2 class="text-3xl sm:text-4xl font-display font-bold text-espresso mb-4">
-          Why Small-Batch Hand-Checked Drops?
-        </h2>
+        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform rotate-1 hover:rotate-0 transition-transform">
+          <span class="text-3xl mb-1 block">🐾</span>
+          <span class="text-xs font-display font-bold text-ink uppercase block">40kg Lapdog Approved</span>
+          <span class="text-[11px] text-ink-light font-medium">Loopback terry sheds fur easily</span>
+        </div>
 
-        <p class="text-espresso-700 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-8">
-          Mass-produced fast fashion falls apart after one enthusiastic paw swipe. We produce every piece in limited micro-batches in Leicester, UK. Every garment is individually inspected for seam integrity, print sharpness, and fabric heft before being packaged in plastic-free mailers.
-        </p>
+        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform -rotate-1 hover:rotate-0 transition-transform">
+          <span class="text-3xl mb-1 block">💧</span>
+          <span class="text-xs font-display font-bold text-ink uppercase block">Slobber Tested</span>
+          <span class="text-[11px] text-ink-light font-medium">Thick fabric won't show splatter</span>
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-          <div class="bg-white p-5 rounded-2xl border border-sand-200">
-            <div class="text-2xl mb-2">🧵</div>
-            <h3 class="font-display font-bold text-espresso mb-1">Reinforced Bar-Tack Seams</h3>
-            <p class="text-xs text-espresso-600">Built to withstand leash tension, excited jumps, and endless wash cycles.</p>
-          </div>
-
-          <div class="bg-white p-5 rounded-2xl border border-sand-200">
-            <div class="text-2xl mb-2">⏳</div>
-            <h3 class="font-display font-bold text-espresso mb-1">5–7 Day Hand-Check</h3>
-            <p class="text-xs text-espresso-600">Orders are individually checked and prepared with care so every print is 100% spot-on.</p>
-          </div>
-
-          <div class="bg-white p-5 rounded-2xl border border-sand-200">
-            <div class="text-2xl mb-2">🌿</div>
-            <h3 class="font-display font-bold text-espresso mb-1">GOTS Certified Organic</h3>
-            <p class="text-xs text-espresso-600">Clean, pesticide-free cotton that feels heavenly against both human skin and dog snouts.</p>
-          </div>
+        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform rotate-2 hover:rotate-0 transition-transform">
+          <span class="text-3xl mb-1 block">🔍</span>
+          <span class="text-xs font-display font-bold text-ink uppercase block">UK Hand-Checked</span>
+          <span class="text-[11px] text-ink-light font-medium">Micro-batch printed in Leicester</span>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Size & Fit Guide Section: S–XXL Detailed Matrix -->
-  <section id="fit-guide" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <div class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-tan mb-2">
-        <span>📏 Zero Guesswork</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-display font-bold text-espresso tracking-tight mb-4">
-        The Human Fit Matrix (S–XXL)
-      </h2>
-      <p class="text-sm text-espresso-600">
-        Our garments feature a relaxed, dropped-shoulder streetwear drape. Order your normal size for a comfy roomy fit, or size down if you prefer a standard tailored look.
-      </p>
-    </div>
+    <!-- Lightweight Client-Side Waitlist Form Script -->
+    <script is:inline>
+      const form = document.getElementById('waitlist-form');
+      const emailInput = document.getElementById('waitlist-email');
+      const submitBtn = document.getElementById('waitlist-submit');
+      const statusDiv = document.getElementById('waitlist-status');
 
-    <!-- Responsive Table -->
-    <div class="overflow-x-auto bg-sand-100 border border-sand-200 rounded-2xl p-4 shadow-sm">
-      <table class="w-full text-left text-sm text-espresso">
-        <caption class="sr-only">Garment Sizing Matrix for Big Dog Club</caption>
-        <thead>
-          <tr class="border-b border-sand-200 text-xs uppercase font-bold text-espresso-600">
-            <th scope="col" class="py-4 px-4">Size</th>
-            <th scope="col" class="py-4 px-4">Chest (Inches)</th>
-            <th scope="col" class="py-4 px-4">Body Length (cm)</th>
-            <th scope="col" class="py-4 px-4">Sleeve Length (cm)</th>
-            <th scope="col" class="py-4 px-4">Lapdog Capacity</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-sand-200 font-sans text-xs sm:text-sm">
-          <tr class="hover:bg-cream-100 transition-colors">
-            <th scope="row" class="py-4 px-4 font-bold text-tan">Small (S)</th>
-            <td class="py-4 px-4">38 – 40"</td>
-            <td class="py-4 px-4">70 cm</td>
-            <td class="py-4 px-4">64 cm</td>
-            <td class="py-4 px-4 text-espresso-600">Fits 1 medium whippet or 1/2 of a Doberman lap-sit</td>
-          </tr>
-          <tr class="hover:bg-cream-100 transition-colors">
-            <th scope="row" class="py-4 px-4 font-bold text-tan">Medium (M)</th>
-            <td class="py-4 px-4">40 – 42"</td>
-            <td class="py-4 px-4">72 cm</td>
-            <td class="py-4 px-4">65 cm</td>
-            <td class="py-4 px-4 text-espresso-600">Cushions a 35kg Greyhound or boxer head-rest</td>
-          </tr>
-          <tr class="hover:bg-cream-100 transition-colors">
-            <th scope="row" class="py-4 px-4 font-bold text-tan">Large (L)</th>
-            <td class="py-4 px-4">42 – 44"</td>
-            <td class="py-4 px-4">74 cm</td>
-            <td class="py-4 px-4">66 cm</td>
-            <td class="py-4 px-4 text-espresso-600">Certified for 40kg Dobermans with zero boundaries</td>
-          </tr>
-          <tr class="hover:bg-cream-100 transition-colors">
-            <th scope="row" class="py-4 px-4 font-bold text-tan">X-Large (XL)</th>
-            <td class="py-4 px-4">46 – 48"</td>
-            <td class="py-4 px-4">76 cm</td>
-            <td class="py-4 px-4">67 cm</td>
-            <td class="py-4 px-4 text-espresso-600">Easily absorbs a 50kg Cane Corso chin-drop</td>
-          </tr>
-          <tr class="hover:bg-cream-100 transition-colors">
-            <th scope="row" class="py-4 px-4 font-bold text-tan">2X-Large (XXL)</th>
-            <td class="py-4 px-4">50 – 52"</td>
-            <td class="py-4 px-4">78 cm</td>
-            <td class="py-4 px-4">68 cm</td>
-            <td class="py-4 px-4 text-espresso-600">Accommodates a 70kg Great Dane trying to crawl into your lap</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      if (form && emailInput && statusDiv && submitBtn) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = emailInput.value.trim();
 
-  <!-- Relatable Brand Manifesto Story Block -->
-  <section id="about" class="bg-cream-200 border-t border-sand-200 py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-      <div class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-sage-dark">
-        <span>📖 The Velcro Dog Manifesto</span>
-      </div>
+          if (!email) return;
 
-      <h2 class="text-3xl sm:text-5xl font-display font-bold text-espresso tracking-tight">
-        "Big dogs don't have personal space. <br />They have your space."
-      </h2>
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Barking...';
+          statusDiv.className = 'hidden';
 
-      <div class="space-y-6 text-espresso-700 text-base sm:text-lg leading-relaxed text-left max-w-2xl mx-auto">
-        <p>
-          Society sees big breeds—Dobermans, Rottweilers, Great Danes, Mastiffs—and imagines guard dogs pacing barbed-wire fences. But anyone who actually lives with one knows the hilarious truth:
-        </p>
-        <p>
-          They are 40kg sacks of pure affection who get spooked by the toaster, cry if their tennis ball rolls under the couch, and firmly believe their 90-pound body can fit comfortably on your chest while you try to watch TV.
-        </p>
-        <p>
-          We created <strong>{BRAND_CONFIG.name}</strong> to replace the aggressive, scary clichés with clothes that celebrate the goofy, devoted, velcro-like reality of living with gentle giants. No spiked collars or edgy gothic skulls—just premium, heavy cotton built for the best clumsy companions on earth.
-        </p>
-      </div>
+          try {
+            const res = await fetch('/api/waitlist', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email }),
+            });
 
-      <div class="pt-6">
-        <a
-          href="#collection"
-          class="inline-flex items-center px-8 py-4 bg-tan hover:bg-tan-dark text-white font-bold rounded-full transition-all shadow-md hover:shadow-lg"
-        >
-          Join The Club &bull; Shop The Drop
-        </a>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+            const data = await res.json();
+
+            if (res.ok) {
+              statusDiv.textContent = data.message || "You're in the pack! We'll bark when Drop 01 goes live. 🐾";
+              statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-mint text-ink shadow-brutal-sm';
+              emailInput.value = '';
+            } else {
+              statusDiv.textContent = data.error || 'Oops! Please try again.';
+              statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-bubblegum text-ink shadow-brutal-sm';
+            }
+          } catch (err) {
+            statusDiv.textContent = 'Network hiccup! Please try again.';
+            statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-bubblegum text-ink shadow-brutal-sm';
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Bark At Me!</span> <span>🐾</span>';
+          }
+        });
+      }
+    </script>
+  </BaseLayout>
+) : (
+  <meta http-equiv="refresh" content="0; url=/shop" />
+)}

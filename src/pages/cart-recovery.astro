@@ -2,78 +2,81 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getProductBySlug, PRODUCTS } from '../data/products';
 import { BRAND_CONFIG } from '../data/brand';
+import HoodieMockup from '../components/HoodieMockup.astro';
 
 const slug = Astro.url.searchParams.get('slug');
 const product = slug ? getProductBySlug(slug) : PRODUCTS[0];
 ---
 
 <BaseLayout
-  title={`Did Your Dog Step on the Keyboard? | ${BRAND_CONFIG.name}`}
-  description="Resume your checkout or check sizing for your Big Dog Club apparel."
+  title={`Did a 40kg Paw Distract You? | ${BRAND_CONFIG.name}`}
+  description="Resume your checkout or check sizing for your Clumsy Giants apparel."
 >
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
     
     <!-- Goofy Icon -->
-    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-sand-100 border border-sand-200 text-tan mb-6 shadow-sm">
-      <span class="text-3xl">🐾</span>
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-card-vanilla border-2 border-ink text-rust mb-6 shadow-brutal transform rotate-2">
+      <span class="text-4xl">🐾</span>
     </div>
 
-    <span class="text-xs font-bold uppercase tracking-wider text-tan block mb-2">
+    <span class="px-3 py-1 bg-card-vanilla border-2 border-ink rounded-lg text-xs font-display font-bold uppercase tracking-wider text-rust inline-block mb-3 shadow-brutal-sm">
       Checkout Paused
     </span>
-    <h1 class="text-3xl sm:text-5xl font-display font-bold text-espresso tracking-tight mb-4">
+    <h1 class="text-3xl sm:text-5xl font-display font-bold text-ink tracking-tight mb-4">
       Did a 40kg Paw Distract You?
     </h1>
 
-    <p class="text-base text-espresso-700 leading-relaxed max-w-xl mx-auto mb-8">
-      We totally get it—demands for immediate tummy scratches take priority over online shopping. Your cart is safe and waiting whenever you're ready.
+    <p class="text-base text-ink font-medium leading-relaxed max-w-xl mx-auto mb-8">
+      We completely understand—urgent demands for belly rubs take priority over streetwear. Your piece is reserved in your size and ready whenever you are.
     </p>
 
     {product && (
-      <div class="p-6 bg-sand-100 border border-sand-200 rounded-3xl text-left flex flex-col sm:flex-row items-center gap-6 mb-8 shadow-sm">
-        <div class="w-24 h-28 flex-shrink-0 bg-sand-200 rounded-2xl overflow-hidden">
-          <img
-            src={product.images.primary}
-            alt={product.title}
-            width="120"
-            height="150"
-            class="w-full h-full object-cover"
+      <div class="p-6 bg-card-vanilla border-2 border-ink rounded-3xl text-left flex flex-col sm:flex-row items-center gap-6 mb-8 shadow-brutal">
+        <div class="w-28 h-32 flex-shrink-0">
+          <HoodieMockup
+            color="#1A1614"
+            label="480GSM"
+            badge="Reserved"
+            hoodieColorName="Obsidian Bark"
+            class="h-full w-full"
           />
         </div>
-        <div class="flex-grow">
-          <span class="text-[11px] font-bold text-tan uppercase block mb-1">
+        <div class="flex-grow space-y-1">
+          <span class="px-2 py-0.5 bg-canvas-butter border border-ink rounded text-[10px] font-bold text-ink uppercase inline-block">
             Reserved In Your Size
           </span>
-          <h2 class="text-lg font-display font-bold text-espresso mb-1">
+          <h2 class="text-lg font-display font-bold text-ink">
             {product.title}
           </h2>
-          <p class="text-xs text-espresso-600 mb-2">
-            £{product.price}.00 &bull; {product.specs.weight} &bull; Small-Batch UK Hand-Check
+          <p class="text-xs text-ink-light font-medium">
+            £{product.price}.00 &bull; {product.specs.weight} &bull; UK Hand-Checked
           </p>
-          <a
-            href={`/products/${product.slug}`}
-            class="inline-block text-xs font-bold text-tan hover:text-tan-dark underline"
-          >
-            Hop Back & Finish Order &rarr;
-          </a>
+          <div class="pt-2">
+            <a
+              href={`/products/${product.slug}`}
+              class="text-xs font-display font-bold text-rust hover:text-rust-dark underline decoration-2 decoration-rust"
+            >
+              Resume Order for {product.title} &rarr;
+            </a>
+          </div>
         </div>
       </div>
     )}
 
-    <div class="p-4 bg-cream-100 rounded-2xl border border-sand-200 text-xs text-espresso-600 max-w-md mx-auto mb-8">
-      💡 <strong>Need sizing reassurance?</strong> Our garments are roomy and dropped-shoulder so you have plenty of cuddle room without feeling restricted.
+    <div class="p-4 bg-card-vanilla rounded-2xl border-2 border-ink shadow-brutal-sm text-xs font-medium text-ink max-w-md mx-auto mb-8">
+      💡 <strong>Need sizing reassurance?</strong> Our garments have a relaxed, dropped-shoulder fit so you have plenty of room for clumsy lapdog cuddles.
     </div>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href={product ? `/products/${product.slug}` : '/'}
-        class="w-full sm:w-auto px-8 py-3.5 bg-tan hover:bg-tan-dark text-white font-bold text-xs uppercase tracking-wider rounded-full transition-colors shadow-sm"
+        href={product ? `/products/${product.slug}` : '/shop'}
+        class="w-full sm:w-auto px-8 py-3.5 bg-rust hover:bg-rust-dark text-card-vanilla font-display font-bold text-xs uppercase tracking-wider rounded-2xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all"
       >
         Complete My Order &rarr;
       </a>
       <a
-        href="/"
-        class="w-full sm:w-auto px-6 py-3.5 bg-sand-100 hover:bg-sand-200 border border-sand-200 text-espresso font-bold text-xs uppercase tracking-wider rounded-full transition-colors"
+        href="/shop"
+        class="w-full sm:w-auto px-6 py-3.5 bg-card-vanilla hover:bg-card-vanilla/90 border-2 border-ink text-ink font-display font-bold text-xs uppercase tracking-wider rounded-2xl shadow-brutal-sm transition-all"
       >
         Browse Full Drop
       </a>

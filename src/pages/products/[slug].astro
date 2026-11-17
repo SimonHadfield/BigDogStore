@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { PRODUCTS, getProductBySlug } from '../../data/products';
 import { BRAND_CONFIG } from '../../data/brand';
+import HoodieMockup from '../../components/HoodieMockup.astro';
 
 export function getStaticPaths() {
   return PRODUCTS.map((product) => ({
@@ -14,7 +15,7 @@ const { slug } = Astro.params;
 const product = Astro.props.product || getProductBySlug(slug as string);
 
 if (!product) {
-  return Astro.redirect('/');
+  return Astro.redirect('/shop');
 }
 ---
 
@@ -23,127 +24,126 @@ if (!product) {
   description={product.description}
   image={product.images.primary}
 >
-  <!-- Breadcrumb Navigation -->
+  <!-- Breadcrumb Navigation with Neo-Brutalist Pills -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4" aria-label="Breadcrumb">
-    <ol class="flex items-center space-x-2 text-xs font-semibold text-espresso-600">
+    <ol class="flex items-center space-x-2 text-xs font-bold text-ink">
       <li>
-        <a href="/" class="hover:text-tan transition-colors">Home</a>
+        <a href="/" class="hover:text-rust underline decoration-2 decoration-rust">Home</a>
       </li>
       <li>/</li>
       <li>
-        <a href="/#collection" class="hover:text-tan transition-colors">Current Drop</a>
+        <a href="/shop#collection" class="hover:text-rust underline decoration-2 decoration-rust">Drop 01</a>
       </li>
       <li>/</li>
-      <li class="text-espresso truncate" aria-current="page">{product.title}</li>
+      <li class="px-2 py-0.5 bg-card-vanilla border border-ink rounded-md truncate max-w-[200px]" aria-current="page">
+        {product.title}
+      </li>
     </ol>
   </nav>
 
   <!-- Product Detail Section -->
-  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
       
-      <!-- Left: Imagery Showcase -->
+      <!-- Left: Mockup & Detail Showcase (No stock flat-lays) -->
       <div class="lg:col-span-7 space-y-6">
-        <div class="aspect-[4/5] bg-sand-100 border border-sand-200 rounded-3xl overflow-hidden relative shadow-lg">
+        <div class="bg-card-vanilla border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg relative overflow-hidden">
           {product.badge && (
-            <span class="absolute top-4 left-4 z-20 px-3.5 py-1 bg-tan text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-sm">
+            <span class="absolute top-6 left-6 z-20 px-3.5 py-1 bg-mint text-ink text-xs font-display font-bold uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal-sm transform -rotate-3">
               {product.badge}
             </span>
           )}
-          <picture>
-            <source
-              srcset={product.images.primary}
-              media="(min-width: 640px)"
-            />
-            <img
-              src={product.images.primary}
-              alt={product.images.alt}
-              width="1000"
-              height="1250"
-              loading="eager"
-              decoding="async"
-              class="w-full h-full object-cover"
-            />
-          </picture>
-        </div>
 
-        <!-- Secondary Detail View -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="aspect-square bg-sand-100 border border-sand-200 rounded-2xl overflow-hidden">
-            <img
-              src={product.images.secondary}
-              alt={`${product.title} fabric and craftsmanship detail`}
-              width="500"
-              height="500"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover"
+          <!-- Clean Product Mockup Slot -->
+          <div class="w-full">
+            <HoodieMockup
+              color={product.colors[0].slug === 'espresso' || product.colors[0].slug === 'onyx' ? '#1A1614' : product.colors[0].slug === 'sand' || product.colors[0].slug === 'bone' ? '#FFFDF7' : product.colors[0].slug === 'sage' ? '#52B788' : '#E06D3B'}
+              label={product.specs.weight}
+              badge="Drop 01 Essential"
+              hoodieColorName={product.colors[0].name}
+              class="h-[420px] sm:h-[500px]"
             />
           </div>
-          <div class="bg-sand-100 border border-sand-200 rounded-2xl p-6 flex flex-col justify-center">
-            <span class="text-xs font-bold uppercase tracking-wider text-tan mb-1">
-              Field Tested
+        </div>
+
+        <!-- Fun Feature Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-5 shadow-brutal">
+            <span class="text-xs font-display font-bold uppercase tracking-wider text-rust mb-1 block">
+              🐾 Clumsy Paw Tested
             </span>
-            <h4 class="text-sm font-display font-bold text-espresso mb-1">
-              Dog Hair Resistant Weave
+            <h4 class="text-sm font-display font-bold text-ink mb-1">
+              Reinforced Bar-Tack Seams
             </h4>
-            <p class="text-xs text-espresso-600 leading-relaxed">
-              Tightly combed organic loopback cotton prevents fur from embedding into the fibers. A simple swipe with a lint brush leaves it looking fresh.
+            <p class="text-xs text-ink-light font-medium leading-relaxed">
+              Engineered with heavy-duty twin-needle stitching to survive 40kg dogs pawing at the front pocket for biscuits.
+            </p>
+          </div>
+
+          <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-5 shadow-brutal">
+            <span class="text-xs font-display font-bold uppercase tracking-wider text-mint-dark mb-1 block">
+              ✨ Fur & Slobber Shield
+            </span>
+            <h4 class="text-sm font-display font-bold text-ink mb-1">
+              Loopback Organic Cotton
+            </h4>
+            <p class="text-xs text-ink-light font-medium leading-relaxed">
+              Tightly combed cotton loopback fleece that lets fur brush right off without digging into the weave.
             </p>
           </div>
         </div>
       </div>
 
       <!-- Right: Product Selector & Checkout Form -->
-      <div class="lg:col-span-5 space-y-8">
+      <div class="lg:col-span-5 bg-card-vanilla border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg space-y-6">
         
         <div>
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-sage">
-              {product.specs.weight} &bull; Small-Batch Drop
+            <span class="px-2.5 py-0.5 bg-mint text-ink text-xs font-display font-bold rounded-md border border-ink shadow-brutal-sm">
+              {product.specs.weight}
             </span>
-            <span class="text-xs font-mono text-espresso-500">
+            <span class="text-xs font-mono font-bold text-ink-light">
               {product.sku}
             </span>
           </div>
 
-          <h1 class="text-2xl sm:text-4xl font-display font-bold text-espresso tracking-tight mb-2">
+          <h1 class="text-2xl sm:text-3xl font-display font-bold text-ink tracking-tight mb-2">
             {product.title}
           </h1>
 
-          <p class="text-sm text-espresso-600 mb-4 leading-relaxed">
+          <p class="text-xs sm:text-sm text-ink-light font-medium mb-4 leading-relaxed">
             {product.subtitle}
           </p>
 
-          <div class="flex items-baseline space-x-3 pb-6 border-b border-sand-200">
-            <span class="text-3xl font-display font-bold text-espresso">
+          <div class="flex items-baseline space-x-3 pb-4 border-b-2 border-ink">
+            <span class="text-3xl font-display font-bold text-ink">
               £{product.price}.00
             </span>
-            <span class="text-xs text-espresso-500 font-semibold">
-              GBP &bull; Free UK Delivery on orders over £70
+            <span class="text-xs text-ink-light font-bold">
+              GBP &bull; Free UK Shipping over £70
             </span>
           </div>
         </div>
 
-        <!-- Relatable Goofy Quote Box -->
+        <!-- Relatable Goofy Quote Sticker -->
         {product.goofyQuote && (
-          <div class="p-4 bg-sand-100 rounded-2xl border border-sand-200 text-xs italic text-espresso-700 flex items-start gap-2.5">
-            <span class="text-base not-italic">🐾</span>
+          <div class="p-4 bg-canvas-butter/40 rounded-2xl border-2 border-ink shadow-brutal-sm text-xs font-bold text-ink flex items-start gap-2.5">
+            <span class="text-lg">🐕</span>
             <div>
-              <span class="font-bold not-italic block mb-0.5 text-espresso">The Big Dog Reality:</span>
+              <span class="font-display font-bold block mb-0.5 text-rust uppercase text-[11px]">The Big Dog Reality:</span>
               {product.goofyQuote}
             </div>
           </div>
         )}
 
-        <!-- Manual Batch Fulfillment & Inspection Notice -->
-        <div class="p-4 bg-butter/60 border border-amber-200/80 rounded-2xl text-xs text-espresso-800 space-y-1">
-          <div class="flex items-center gap-1.5 font-bold text-amber-900">
+        <!-- Small-Batch UK Hand-Inspection Notice -->
+        <div class="p-4 bg-periwinkle/30 border-2 border-ink rounded-2xl text-xs text-ink space-y-1 shadow-brutal-sm">
+          <div class="flex items-center gap-1.5 font-display font-bold text-rust">
             <span>⏳</span>
-            <span>Small-Batch Hand Inspection</span>
+            <span>UK Small-Batch Hand Inspection</span>
           </div>
-          <p class="text-espresso-700 leading-relaxed">
-            Hoodies and apparel are ordered and hand-checked in small batches before dispatch (5–7 working days) so every print and seam is spot-on.
+          <p class="text-ink-light font-medium leading-relaxed">
+            Every garment is printed in small batches and hand-checked in Leicester, UK before dispatch (5–7 working days) so prints and seams are 100% spot-on.
           </p>
         </div>
 
@@ -159,9 +159,9 @@ if (!product) {
           <input type="hidden" name="sku" value={product.sku} />
 
           <!-- Colorway Selector -->
-          <fieldset class="space-y-3">
-            <legend class="text-xs font-bold uppercase tracking-wider text-espresso">
-              Select Colorway: <span id="selected-color-label" class="font-bold text-tan">{product.colors[0].name}</span>
+          <fieldset class="space-y-2">
+            <legend class="text-xs font-display font-bold uppercase tracking-wider text-ink">
+              Choose Colorway: <span id="selected-color-label" class="text-rust">{product.colors[0].name}</span>
             </legend>
             <div class="flex items-center space-x-3" role="radiogroup" aria-label="Available Colorways">
               {product.colors.map((color, idx) => (
@@ -175,7 +175,7 @@ if (!product) {
                     data-color-name={color.name}
                   />
                   <span
-                    class="block w-9 h-9 rounded-full border-2 border-sand-300 peer-checked:border-tan peer-checked:ring-2 peer-checked:ring-tan/30 transition-all shadow-sm"
+                    class="block w-9 h-9 rounded-full border-2 border-ink shadow-brutal-sm peer-checked:ring-2 peer-checked:ring-rust peer-checked:translate-x-[1px] peer-checked:translate-y-[1px] peer-checked:shadow-none transition-all"
                     style={`background-color: ${color.hex}`}
                     title={color.name}
                   ></span>
@@ -185,17 +185,17 @@ if (!product) {
           </fieldset>
 
           <!-- Size Selector -->
-          <fieldset class="space-y-3">
+          <fieldset class="space-y-2">
             <div class="flex justify-between items-center">
-              <legend class="text-xs font-bold uppercase tracking-wider text-espresso">
+              <legend class="text-xs font-display font-bold uppercase tracking-wider text-ink">
                 Select Size (UK Standard S–XXL)
               </legend>
-              <a href="#fit-matrix" class="text-xs font-semibold text-tan underline hover:text-tan-dark">
-                Fit Guide
+              <a href="/shop#fit-guide" class="text-xs font-bold text-rust underline">
+                Lapdog Fit Guide
               </a>
             </div>
             
-            <div class="grid grid-cols-5 gap-2.5">
+            <div class="grid grid-cols-5 gap-2">
               {product.sizes.map((size, idx) => (
                 <label class="cursor-pointer">
                   <input
@@ -205,7 +205,7 @@ if (!product) {
                     checked={idx === 1}
                     class="sr-only peer"
                   />
-                  <div class="py-3 text-center border-2 border-sand-200 bg-sand-100 rounded-xl text-xs font-bold text-espresso peer-checked:border-tan peer-checked:bg-tan peer-checked:text-white transition-all shadow-sm">
+                  <div class="py-2.5 text-center border-2 border-ink bg-card-vanilla rounded-xl text-xs font-display font-bold text-ink shadow-brutal-sm peer-checked:border-ink peer-checked:bg-rust peer-checked:text-card-vanilla peer-checked:translate-x-[2px] peer-checked:translate-y-[2px] peer-checked:shadow-none transition-all">
                     {size}
                   </div>
                 </label>
@@ -213,128 +213,53 @@ if (!product) {
             </div>
           </fieldset>
 
-          <!-- Buy Now / Add to Cart CTA -->
+          <!-- Buy Now CTA -->
           <div class="pt-2">
             <button
               type="submit"
               id="submit-button"
-              class="w-full py-4 px-6 bg-tan hover:bg-tan-dark active:scale-[0.98] text-white font-bold text-sm uppercase tracking-wider rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2"
+              class="w-full py-4 px-6 bg-rust hover:bg-rust-dark text-card-vanilla font-display font-bold text-sm uppercase tracking-wider rounded-2xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center justify-center space-x-2"
             >
-              <span>Secure UK Checkout &bull; £{product.price}.00</span>
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+              <span>Instant UK Stripe Checkout &bull; £{product.price}.00</span>
+              <span class="text-lg">🐾</span>
             </button>
-            <p class="text-center text-[11px] text-espresso-500 mt-2">
-              🔒 Powered by Stripe &bull; Direct UK fulfillment via Royal Mail
+            <p class="text-center text-[11px] font-bold text-ink-light mt-2">
+              🔒 256-bit Stripe Security &bull; Royal Mail Tracked 24
             </p>
           </div>
         </form>
 
-        <!-- Garment Specifications Breakdown -->
-        <div class="border-t border-sand-200 pt-6 space-y-4">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-espresso">
-            Garment Specifications
+        <!-- Garment Specs -->
+        <div class="border-t-2 border-ink pt-4 space-y-3">
+          <h3 class="text-xs font-display font-bold uppercase tracking-wider text-ink">
+            Garment Blueprint
           </h3>
           
-          <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-xs">
-            <div>
-              <dt class="font-bold text-espresso">Fabric Weight</dt>
-              <dd class="text-espresso-600">{product.specs.weight}</dd>
+          <dl class="grid grid-cols-2 gap-3 text-xs font-medium">
+            <div class="p-2.5 bg-canvas-butter/20 rounded-xl border border-ink">
+              <dt class="font-bold text-ink">Fabric Weight</dt>
+              <dd class="text-ink-light">{product.specs.weight}</dd>
             </div>
-            <div>
-              <dt class="font-bold text-espresso">Material</dt>
-              <dd class="text-espresso-600">{product.specs.material}</dd>
+            <div class="p-2.5 bg-canvas-butter/20 rounded-xl border border-ink">
+              <dt class="font-bold text-ink">Material</dt>
+              <dd class="text-ink-light">{product.specs.material}</dd>
             </div>
-            <div>
-              <dt class="font-bold text-espresso">Fit Silhouette</dt>
-              <dd class="text-espresso-600">{product.specs.fit}</dd>
+            <div class="p-2.5 bg-canvas-butter/20 rounded-xl border border-ink">
+              <dt class="font-bold text-ink">Fit Cut</dt>
+              <dd class="text-ink-light">{product.specs.fit}</dd>
             </div>
-            <div>
-              <dt class="font-bold text-espresso">Origin</dt>
-              <dd class="text-espresso-600">{product.specs.origin}</dd>
+            <div class="p-2.5 bg-canvas-butter/20 rounded-xl border border-ink">
+              <dt class="font-bold text-ink">Origin</dt>
+              <dd class="text-ink-light">{product.specs.origin}</dd>
             </div>
           </dl>
-
-          <div class="pt-2">
-            <p class="text-xs text-espresso-600 leading-relaxed">
-              <strong class="text-espresso">Care:</strong> {product.specs.care}
-            </p>
-          </div>
         </div>
 
-        <!-- Key Features List -->
-        <div class="border-t border-sand-200 pt-6 space-y-3">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-espresso">
-            Why Dog Owners Love It
-          </h3>
-          <ul class="space-y-2 text-xs text-espresso-700">
-            {product.features.map((feature) => (
-              <li class="flex items-start space-x-2">
-                <span class="text-tan mt-0.5">&bull;</span>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Sizing Matrix Quick Ref Anchor -->
-    <div id="fit-matrix" class="mt-20 pt-12 border-t border-sand-200">
-      <h3 class="text-2xl font-display font-bold text-espresso text-center mb-6">
-        Sizing Matrix & Lapdog Ratings
-      </h3>
-      <div class="max-w-4xl mx-auto overflow-x-auto bg-sand-100 border border-sand-200 rounded-2xl p-4 shadow-sm">
-        <table class="w-full text-left text-xs sm:text-sm text-espresso">
-          <caption class="sr-only">Detailed Fit Guide</caption>
-          <thead>
-            <tr class="border-b border-sand-200 font-bold uppercase text-[11px] text-espresso-600">
-              <th scope="col" class="py-3 px-4">Size</th>
-              <th scope="col" class="py-3 px-4">To Fit Chest</th>
-              <th scope="col" class="py-3 px-4">Length</th>
-              <th scope="col" class="py-3 px-4">Dog Breeds & Real Lapdog Fit</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-sand-200">
-            <tr>
-              <th scope="row" class="py-3 px-4 font-bold text-tan">Small</th>
-              <td class="py-3 px-4">38 – 40"</td>
-              <td class="py-3 px-4">70 cm</td>
-              <td class="py-3 px-4 text-espresso-600">Whippet / Cocker Spaniel cuddles</td>
-            </tr>
-            <tr>
-              <th scope="row" class="py-3 px-4 font-bold text-tan">Medium</th>
-              <td class="py-3 px-4">40 – 42"</td>
-              <td class="py-3 px-4">72 cm</td>
-              <td class="py-3 px-4 text-espresso-600">Greyhound / Boxer head-rest</td>
-            </tr>
-            <tr>
-              <th scope="row" class="py-3 px-4 font-bold text-tan">Large</th>
-              <td class="py-3 px-4">42 – 44"</td>
-              <td class="py-3 px-4">74 cm</td>
-              <td class="py-3 px-4 text-espresso-600">40kg Doberman / German Shepherd full-lap occupation</td>
-            </tr>
-            <tr>
-              <th scope="row" class="py-3 px-4 font-bold text-tan">X-Large</th>
-              <td class="py-3 px-4">46 – 48"</td>
-              <td class="py-3 px-4">76 cm</td>
-              <td class="py-3 px-4 text-espresso-600">50kg Cane Corso / Rottweiler snuggles</td>
-            </tr>
-            <tr>
-              <th scope="row" class="py-3 px-4 font-bold text-tan">2X-Large</th>
-              <td class="py-3 px-4">50 – 52"</td>
-              <td class="py-3 px-4">78 cm</td>
-              <td class="py-3 px-4 text-espresso-600">70kg Great Dane / Irish Wolfhound blanket mode</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </article>
 
-  <!-- Lightweight client script for live color swatch label update -->
+  <!-- Interactive script for radio swatch labels -->
   <script is:inline>
     document.querySelectorAll('input[name="color"]').forEach((radio) => {
       radio.addEventListener('change', (e) => {

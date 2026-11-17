@@ -1,27 +1,25 @@
-# BigDogStore - Project Progress & Architecture
+# Clumsy Giants - Project Progress & Architecture
 
 ## Overview
-High-converting, ultra-fast e-commerce storefront for **Big Dog Club** (configurable in `src/data/brand.ts`), a warm, casual, slightly goofy UK lifestyle brand for owners of clumsy 40kg lapdogs and gentle giants.
+Ultra-fast e-commerce storefront & waitlist launchpad for **Clumsy Giants**, a colorful, goofy, retro-playful UK streetwear brand dedicated to 40kg lapdogs and clumsy gentle giants.
 
-## Stack
-- **Framework**: Astro 4 (SSR hybrid mode for dynamic Checkout & Webhook API routes)
+## Stack & Architecture
+- **Framework**: Astro 4 (SSR hybrid mode for dynamic Checkout, Webhook, and Waitlist API routes)
 - **Adapter**: Cloudflare Pages (`@astrojs/cloudflare`)
-- **Styling**: Tailwind CSS with custom palette (Warm Cream `#FAF6F0`, Soft Sand `#F2EAE0`, Deep Espresso `#1E1B18`, Doberman Tan `#D97736`, Matcha Sage `#4A7C59`)
-- **Typography**: Self-hosted `@fontsource/fraunces` and `@fontsource/plus-jakarta-sans` for zero third-party font calls and strict CSP compliance
-- **Payment & Webhooks**: Stripe Node SDK with UK-only address collection
-- **Security**: Strict Content-Security-Policy and HTTP security headers in `public/_headers` (A+ target on SecurityHeaders.com, 100/100 Lighthouse)
+- **Styling**: Tailwind CSS with custom Neo-Brutalist design tokens (Retro Butter `#F8D26A`, Vanilla `#FFFDF7`, Deep Ink `#1A1614` 2px borders with 4px hard offset shadows, Doberman Rust `#E06D3B`, Mint `#52B788`)
+- **Typography**: Self-hosted `@fontsource/fredoka` (600/700) for bouncy retro hoodie headings, `@fontsource/plus-jakarta-sans` for readable body copy.
+- **Waitlist Mode**: Built-in `WAITLIST_MODE` boolean toggle in `src/data/brand.ts` with dedicated coming soon landing page at `/` and store preview at `/shop`.
+- **Payment & Webhooks**: Stripe Node SDK with UK-only address enforcement.
+- **Security**: Strict Content-Security-Policy and HTTP security headers in `public/_headers` (A+ target on SecurityHeaders.com, 100/100 Lighthouse).
 
 ## Completed Milestones
-- [x] Initialized Git repository and documented architecture.
-- [x] Setup Astro 4 + Tailwind + `@astrojs/cloudflare` edge adapter.
-- [x] Rebranded from dark aesthetic to warm, friendly lifestyle vibe (*Big Dog Club*).
-- [x] Modularized brand configuration in `src/data/brand.ts` for quick renaming (e.g. *Big Dog Club* / *Velcro Dog Club*).
-- [x] Upgraded typography to self-hosted `@fontsource` packages.
-- [x] Re-architected homepage hero into bright two-column layout with product showcase card and honest trust bar.
-- [x] Integrated manual small-batch UK hand-inspection messaging (5–7 working days) across product pages and confirmation screens.
-- [x] Preserved and verified Stripe checkout API (`/api/checkout`), webhook (`/api/webhook`), and POD fulfillment service (`src/lib/fulfillment.ts`).
-- [x] Passed automated verification test suite and Cloudflare Pages production build.
-
-## Ongoing Maintenance & Enhancements
-- [ ] Connect production Stripe API keys in Cloudflare Pages environment variables (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`).
-- [ ] Connect production UK Print-on-Demand supplier credentials in `src/lib/fulfillment.ts`.
+- [x] Rebranded to **Clumsy Giants** with colorful retro-playful aesthetic.
+- [x] Configured non-white vibrant canvas: Retro Butter (`#F8D26A`) with Vanilla cards (`#FFFDF7`) and hard 4px ink drop shadows (`shadow-brutal`).
+- [x] Installed self-hosted `@fontsource/fredoka` for bubbly, goofy headings.
+- [x] Created reusable SVG hoodie mockup slot component ([src/components/HoodieMockup.astro](file:///a:/dev/BigDogStore/src/components/HoodieMockup.astro)) replacing stock flat-lays.
+- [x] Implemented `WAITLIST_MODE: true` in `src/data/brand.ts`.
+- [x] Created high-converting Coming Soon landing page at `/` with Drop 01 teaser card.
+- [x] Implemented `POST /api/waitlist` endpoint with validation, clear Cloudflare D1 comments, and cheerful pack confirmation.
+- [x] Created full store route at `/shop` so the store can be previewed while waitlist is active.
+- [x] Maintained small-batch UK hand-inspection messaging (5–7 working days) across all product detail and order confirmation pages.
+- [x] Passed automated verification test suite (6/6 tests passing) and Cloudflare Pages build.

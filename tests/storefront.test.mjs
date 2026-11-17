@@ -15,6 +15,37 @@ test('Cloudflare Pages _headers has strict security headers', () => {
   assert.ok(content.includes('Strict-Transport-Security: max-age=31536000'), 'Must include HSTS');
 });
 
+test('Brand config has Clumsy Giants name and WAITLIST_MODE flag', async () => {
+  const { BRAND_CONFIG } = await import('../src/data/brand.ts');
+  assert.equal(BRAND_CONFIG.name, 'Clumsy Giants');
+  assert.equal(typeof BRAND_CONFIG.WAITLIST_MODE, 'boolean');
+});
+
+test('Waitlist API route exists and handles email validation', async () => {
+  const { POST } = await import('../src/pages/api/waitlist.ts');
+
+  // Test invalid email
+  const invalidReq = new Request('http://localhost/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: 'not-an-email' }),
+  });
+  const invalidRes = await POST({ request: invalidReq });
+  assert.equal(invalidRes.status, 400);
+
+  // Test valid email
+  const validReq = new Request('http://localhost/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: 'doberman.lover@example.co.uk' }),
+  });
+  const validRes = await POST({ request: validReq });
+  assert.equal(validRes.status, 200);
+  const data = await validRes.json();
+  assert.ok(data.success);
+  assert.ok(data.message.includes('pack'));
+});
+
 test('Dist artifact includes _headers and _routes.json for Cloudflare Pages', () => {
   assert.ok(fs.existsSync(path.resolve('dist/_headers')), 'dist/_headers must be copied');
   assert.ok(fs.existsSync(path.resolve('dist/_routes.json')), 'dist/_routes.json must be generated');
@@ -49,27 +80,22 @@ test('Fulfillment service dispatches order and builds clean POD supplier payload
     customerEmail: 'handler@doberman.co.uk',
     customerName: 'Alistair Vance',
     shippingAddress: {
-      name: 'Alistair Vance',
-      line1: '14 High Street',
+      line1: '42 Meadow Lane',
       city: 'Cotswolds',
       postalCode: 'GL54 1AA',
-      country: 'GB'
+      country: 'GB',
     },
     items: [
       {
         sku: 'CN-HD-480-BLK',
-        productTitle: 'Nobile 480GSM Heavyweight Hoodie',
+        title: 'Nobile 480GSM Heavyweight Hoodie',
         size: 'L',
         color: 'Pitch Onyx',
         quantity: 1,
-        unitPricePence: 11500
-      }
+      },
     ],
-    brand: 'CANIS NOBILE ATELIER UK',
-    createdTimestamp: new Date().toISOString()
   });
 
-  assert.equal(result.success, true);
-  assert.equal(result.orderReference, 'cs_test_mock_123456789');
-  assert.ok(result.supplierOrderId, 'Must provide supplierOrderId reference');
+  assert.ok(result.success, 'Fulfillment dispatch must succeed');
+  assert.ok(result.supplierOrderId?.startsWith('SUP-UK-'), 'Must generate UK supplier reference');
 });

@@ -20,69 +20,69 @@ if (sessionId) {
 ---
 
 <BaseLayout
-  title={`Order Confirmed! Welcome to ${BRAND_CONFIG.name}`}
-  description="Your Big Dog Club order has been received and queued for small-batch UK hand-inspection."
+  title={`Order Locked In! | ${BRAND_CONFIG.name}`}
+  description="Your Clumsy Giants apparel order is registered and queued for UK small-batch hand inspection."
 >
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
     
-    <!-- Playful Success Icon -->
-    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-tan-faint border-2 border-tan text-tan mb-6 shadow-sm">
-      <span class="text-3xl">🐾</span>
+    <!-- Neo-brutalist Success Badge -->
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-mint border-2 border-ink text-ink mb-6 shadow-brutal transform -rotate-3">
+      <span class="text-4xl">🐾</span>
     </div>
 
-    <span class="text-xs font-bold uppercase tracking-wider text-tan block mb-2">
+    <span class="px-3 py-1 bg-card-vanilla border-2 border-ink rounded-lg text-xs font-display font-bold uppercase tracking-wider text-rust inline-block mb-3 shadow-brutal-sm">
       Order Confirmed &bull; Royal Mail Tracked 24
     </span>
-    <h1 class="text-3xl sm:text-5xl font-display font-bold text-espresso tracking-tight mb-4">
-      Give Your Dog a Treat!
+    <h1 class="text-3xl sm:text-5xl font-display font-bold text-ink tracking-tight mb-4">
+      Give That Giant a Belly Rub!
     </h1>
 
-    <p class="text-base text-espresso-700 leading-relaxed max-w-xl mx-auto mb-8">
-      Your order is locked in! Give that giant goofball an ear scratch for us. We've got everything queued up for production.
+    <p class="text-base text-ink font-medium leading-relaxed max-w-xl mx-auto mb-8">
+      Your order is locked into our production queue. Give that clumsy lapdog an ear scratch for us—your heavyweight streetwear is on its way.
     </p>
 
-    <!-- Small-Batch Fulfillment Notice Box -->
-    <div class="p-5 bg-sand-100 border border-sand-200 rounded-2xl text-left text-sm text-espresso-800 space-y-2 mb-8 shadow-sm">
-      <div class="flex items-center gap-2 font-bold text-espresso">
-        <span class="text-lg">🔍</span>
-        <span>Small-Batch Hand Inspection (5–7 Working Days)</span>
+    <!-- Small-Batch UK Hand Check Notice Box -->
+    <div class="p-6 bg-card-vanilla border-2 border-ink rounded-3xl text-left text-sm text-ink space-y-2 mb-8 shadow-brutal">
+      <div class="flex items-center gap-2 font-display font-bold text-rust">
+        <span class="text-xl">🔍</span>
+        <span>UK Micro-Batch Hand Inspection (5–7 Working Days)</span>
       </div>
-      <p class="text-xs sm:text-sm text-espresso-600 leading-relaxed">
-        Because we care about top-tier quality, your garments are printed in small batches and hand-checked right here in the UK before dispatch (5–7 working days) so every print and seam is 100% spot-on. Once inspected and packed in our eco-friendly mailers, you'll receive your Royal Mail Tracked 24 number straight to your inbox.
+      <p class="text-xs sm:text-sm text-ink-light font-medium leading-relaxed">
+        Because big dogs play rough, your garments are printed in small batches and hand-checked right here in Leicester, UK before dispatch (5–7 working days). Once inspected and packaged in eco-friendly mailers, you'll receive your Royal Mail Tracked 24 tracking link directly by email.
       </p>
     </div>
 
     <!-- Order Metadata Card -->
-    <div class="p-6 sm:p-8 bg-sand-100 border border-sand-200 rounded-2xl text-left text-xs space-y-4 mb-8 shadow-sm">
-      <div class="flex flex-col sm:flex-row justify-between border-b border-sand-200 pb-4">
+    <div class="p-6 sm:p-8 bg-card-vanilla border-2 border-ink rounded-3xl text-left text-xs space-y-4 mb-8 shadow-brutal">
+      <div class="flex flex-col sm:flex-row justify-between border-b-2 border-ink pb-4">
         <div>
-          <span class="text-espresso-500 block uppercase text-[10px] font-bold">Stripe Reference</span>
-          <span class="text-espresso font-mono font-semibold">{sessionId ? sessionId.slice(0, 24) + '...' : 'REF-BDC-' + Math.floor(100000 + Math.random() * 900000)}</span>
+          <span class="text-ink-light block uppercase text-[10px] font-bold">Stripe Reference</span>
+          <span class="text-ink font-mono font-bold">{sessionId ? sessionId.slice(0, 24) + '...' : 'REF-CG-' + Math.floor(100000 + Math.random() * 900000)}</span>
         </div>
         <div class="mt-2 sm:mt-0">
-          <span class="text-espresso-500 block uppercase text-[10px] font-bold">Status</span>
-          <span class="text-sage font-bold flex items-center">
-            <span class="w-2 h-2 rounded-full bg-sage mr-1.5 animate-pulse"></span>
+          <span class="text-ink-light block uppercase text-[10px] font-bold">Status</span>
+          <span class="text-mint-dark font-display font-bold flex items-center">
+            <span class="w-2.5 h-2.5 rounded-full bg-mint mr-1.5 border border-ink animate-pulse"></span>
             Queued for Hand-Check
           </span>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-sand-200 pb-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b-2 border-ink pb-4 font-medium">
         <div>
-          <span class="text-espresso-500 block uppercase text-[10px] font-bold">Estimated Dispatch</span>
-          <span class="text-espresso font-semibold">5–7 Working Days (UK Hand-Check)</span>
+          <span class="text-ink-light block uppercase text-[10px] font-bold">Estimated Dispatch</span>
+          <span class="text-ink font-bold">5–7 Working Days (UK Hand-Check)</span>
         </div>
         <div>
-          <span class="text-espresso-500 block uppercase text-[10px] font-bold">Shipping Carrier</span>
-          <span class="text-espresso font-semibold">Royal Mail Tracked 24 (United Kingdom)</span>
+          <span class="text-ink-light block uppercase text-[10px] font-bold">Shipping Carrier</span>
+          <span class="text-ink font-bold">Royal Mail Tracked 24 (United Kingdom)</span>
         </div>
       </div>
 
       {orderDetails?.shipping_details?.address && (
-        <div class="pt-2">
-          <span class="text-espresso-500 block uppercase text-[10px] font-bold">Delivery Address</span>
-          <p class="text-espresso mt-1">
+        <div class="pt-2 font-medium">
+          <span class="text-ink-light block uppercase text-[10px] font-bold">Delivery Address</span>
+          <p class="text-ink mt-1 font-bold">
             {orderDetails.shipping_details.name}<br />
             {orderDetails.shipping_details.address.line1}<br />
             {orderDetails.shipping_details.address.city}, {orderDetails.shipping_details.address.postal_code}<br />
@@ -94,14 +94,14 @@ if (sessionId) {
 
     <!-- Help & Next Steps -->
     <div class="space-y-4">
-      <p class="text-xs text-espresso-600">
-        Need to change your size or shipping address before batch printing starts? Email us directly at <a href={`mailto:${BRAND_CONFIG.contactEmail}`} class="text-tan underline font-semibold">{BRAND_CONFIG.contactEmail}</a>.
+      <p class="text-xs font-medium text-ink-light">
+        Need to adjust your size or address before printing starts? Woof at us at <a href={`mailto:${BRAND_CONFIG.contactEmail}`} class="text-rust underline font-bold">{BRAND_CONFIG.contactEmail}</a>.
       </p>
 
       <div class="pt-4">
         <a
-          href="/"
-          class="inline-flex items-center px-8 py-3.5 bg-espresso hover:bg-tan text-white text-xs uppercase tracking-wider font-bold rounded-full transition-colors shadow-sm"
+          href="/shop"
+          class="inline-flex items-center px-8 py-3.5 bg-rust hover:bg-rust-dark text-card-vanilla font-display text-xs uppercase tracking-wider font-bold rounded-2xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all"
         >
           Return to {BRAND_CONFIG.name} Store &rarr;
         </a>

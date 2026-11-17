@@ -4,57 +4,50 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50: '#FDFBF7',
-          100: '#FAF6F0', // Warm Cream primary background
-          200: '#F5EFE6',
-          300: '#EBDDCC',
+        canvas: {
+          butter: '#F8D26A', // Vibrant Retro Butter/Marigold canvas
+          periwinkle: '#D8E6FA', // Soft Periwinkle Blue alternative
         },
-        sand: {
-          50: '#FAF7F2',
-          100: '#F2EAE0', // Soft Sand card background
-          200: '#E6D7C7',
-          300: '#D5BEA8',
-          400: '#C2A388',
+        card: {
+          vanilla: '#FFFDF7', // Crisp Off-White/Vanilla product cards
         },
-        espresso: {
-          DEFAULT: '#1E1B18', // Deep Espresso primary text
-          900: '#1E1B18',
-          800: '#2E2A25',
-          700: '#423D35',
-          600: '#5C554B',
-          500: '#7A7265',
-          400: '#9E9484',
-          300: '#C4BCB0',
+        ink: {
+          DEFAULT: '#1A1614', // Deep Ink 2px borders & typography
+          light: '#36302C',
         },
-        tan: {
-          DEFAULT: '#D97736', // Doberman Tan primary buttons/badges
-          dark: '#B85E22',
-          light: '#F49E63',
-          faint: '#FDF3EB',
+        rust: {
+          DEFAULT: '#E06D3B', // Doberman Rust primary buttons
+          dark: '#C45727',
+          light: '#F48E60',
         },
-        sage: {
-          DEFAULT: '#4A7C59', // Sage/Matcha secondary accents
-          dark: '#385F44',
-          light: '#659C76',
-          faint: '#EEF5F0',
+        mint: {
+          DEFAULT: '#52B788', // Mint/Sage sticker badges
+          dark: '#3A966A',
+          light: '#74C69D',
+          faint: '#EAF7EE',
         },
-        butter: '#FBF3D5',
+        bubblegum: '#F28482',
+        sky: '#84D2F6',
+        creamsicle: '#F6BD60',
+      },
+      boxShadow: {
+        brutal: '4px 4px 0px #1A1614',
+        'brutal-sm': '2px 2px 0px #1A1614',
+        'brutal-lg': '6px 6px 0px #1A1614',
+        'brutal-xl': '8px 8px 0px #1A1614',
+        'brutal-hover': '1px 1px 0px #1A1614',
       },
       fontFamily: {
         display: [
-          '"Fraunces"',
-          'ui-serif',
-          'Georgia',
-          'Cambria',
-          'serif',
+          '"Fredoka"',
+          'system-ui',
+          'sans-serif',
         ],
         sans: [
           '"Plus Jakarta Sans"',
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
-          '"Segoe UI"',
           'Roboto',
           'sans-serif',
         ],
