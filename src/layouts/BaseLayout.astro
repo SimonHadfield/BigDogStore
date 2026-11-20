@@ -6,6 +6,7 @@ import '@fontsource/plus-jakarta-sans/500.css';
 import '@fontsource/plus-jakarta-sans/600.css';
 import '@fontsource/plus-jakarta-sans/700.css';
 import { BRAND_CONFIG } from '../data/brand';
+import Logo from '../components/Logo.astro';
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const {
   canonical = Astro.url.href,
 } = Astro.props;
 
-const siteName = `${BRAND_CONFIG.name} UK | Retro Streetwear for 40kg Lapdogs`;
+const siteName = `${BRAND_CONFIG.name} UK | Large Breed Streetwear`;
 const fullTitle = `${title} | ${siteName}`;
 ---
 
@@ -38,7 +39,7 @@ const fullTitle = `${title} | ${siteName}`;
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#F8D26A" />
+    <meta name="theme-color" content="#EDE3D5" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -58,53 +59,59 @@ const fullTitle = `${title} | ${siteName}`;
   </head>
   <body class="flex min-h-screen flex-col bg-canvas-butter text-ink font-sans">
     
-    <!-- Top Announcement Bar: Neo-brutalist Sticker Marquee -->
+    <!-- Top Announcement Bar: Warm Earthy Accent Marquee -->
     <aside aria-label="Announcement" class="bg-ink text-card-vanilla text-xs py-2 px-4 text-center tracking-wide font-bold border-b-2 border-ink">
       <div class="max-w-7xl mx-auto flex items-center justify-center space-x-3 overflow-hidden">
-        <span class="inline-block px-2 py-0.5 bg-mint text-ink text-[11px] font-display rounded-md border border-ink transform -rotate-2">
+        <span class="inline-block px-2.5 py-0.5 bg-olive text-white text-[11px] font-display rounded-md border border-ink transform -rotate-1">
           🐾 FREE UK SHIPPING OVER £70
         </span>
-        <span class="hidden sm:inline">
-          Small-Batch Drops &bull; Slobber-Tested &bull; 100% Clumsy Lapdog Approved
+        <span class="hidden sm:inline text-card-vanilla/90 text-xs">
+          Small-Batch Drops &bull; Slobber-Tested &bull; 100% Gentle Giant Approved
         </span>
-        <span class="inline-block px-2 py-0.5 bg-rust text-white text-[11px] font-display rounded-md border border-ink transform rotate-2">
+        <span class="inline-block px-2.5 py-0.5 bg-rust text-white text-[11px] font-display rounded-md border border-ink transform rotate-1">
           UK HAND-CHECKED
         </span>
       </div>
     </aside>
 
-    <!-- Header / Navigation -->
+    <!-- Header / Navigation: Classic Boutique Streetwear Layout with Centered Logo -->
     <header class="sticky top-0 z-50 bg-canvas-butter/95 backdrop-blur-md border-b-2 border-ink">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
+        <div class="grid grid-cols-3 items-center h-24">
           
-          <!-- Brand Wordmark with Groovy Badge -->
-          <a href="/" class="group flex items-center space-x-2 text-ink hover:opacity-95 transition-transform active:scale-95">
-            <span class="text-3xl sm:text-4xl font-display font-bold tracking-tight text-ink drop-shadow-sm">
-              {BRAND_CONFIG.name}
-            </span>
-            <span class="inline-block px-2.5 py-0.5 text-xs font-display font-bold uppercase tracking-wider bg-mint text-ink rounded-full border-2 border-ink shadow-brutal-sm transform -rotate-3 group-hover:rotate-0 transition-transform">
-              Club
-            </span>
-          </a>
-
-          <!-- Nav Items -->
-          <nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-6 text-sm font-bold text-ink">
-            <a href="/shop" class="hover:text-rust transition-colors px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm">The Store</a>
-            <a href="/shop#collection" class="hover:text-rust transition-colors px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm">Drop 01</a>
-            <a href="/shop#fit-guide" class="hover:text-rust transition-colors px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm">Lapdog Matrix</a>
-            <a href="/shop#about" class="hover:text-rust transition-colors px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm">Why Clumsy?</a>
+          <!-- Left Navigation Links -->
+          <nav aria-label="Main Navigation" class="flex items-center space-x-2 sm:space-x-5 text-xs sm:text-sm font-bold text-ink">
+            <a href="/shop" class="hover:text-rust transition-colors px-2 sm:px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm">
+              The Store
+            </a>
+            <a href="/shop#collection" class="hover:text-rust transition-colors px-2 sm:px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm hidden md:inline-block">
+              Drop 01
+            </a>
+            <a href="/shop#story" class="hover:text-rust transition-colors px-2 sm:px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-ink hover:bg-card-vanilla hover:shadow-brutal-sm hidden sm:inline-block">
+              Our Story
+            </a>
           </nav>
 
-          <!-- Right Call to Action -->
-          <div class="flex items-center space-x-3">
+          <!-- Centered Wordmark Logo -->
+          <div class="flex justify-center items-center">
+            <a href="/" class="focus:outline-none" aria-label="Clumsy Giants Home">
+              <Logo />
+            </a>
+          </div>
+
+          <!-- Right Call to Action & Navigation Links -->
+          <div class="flex items-center justify-end space-x-2 sm:space-x-4">
+            <a href="/shop#fit-guide" class="hover:text-rust text-xs sm:text-sm font-bold transition-colors hidden lg:inline-block">
+              Lapdog Matrix
+            </a>
             <a
-              href="/shop#collection"
-              class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-card-vanilla bg-rust hover:bg-rust-dark rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+              href="/shop"
+              class="inline-flex items-center justify-center px-3.5 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-card-vanilla bg-rust hover:bg-rust-dark rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
             >
               Shop Drop 01 &rarr;
             </a>
           </div>
+
         </div>
       </div>
     </header>
@@ -114,12 +121,12 @@ const fullTitle = `${title} | ${siteName}`;
       <slot />
     </main>
 
-    <!-- Retro Playful Neo-Brutalist Footer -->
+    <!-- Warm Retro-Playful Streetwear Footer -->
     <footer class="bg-card-vanilla border-t-2 border-ink text-ink text-sm mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
           
-          <!-- Column 1: Brand Info -->
+          <!-- Column 1: Brand Info & Wordmark -->
           <div class="space-y-4 md:col-span-2">
             <div class="flex items-center space-x-3">
               <span class="text-3xl font-display font-bold text-ink">{BRAND_CONFIG.name}</span>
@@ -128,13 +135,13 @@ const fullTitle = `${title} | ${siteName}`;
               </span>
             </div>
             <p class="text-ink-light max-w-sm leading-relaxed font-medium">
-              Retro streetwear inspired by goofy 40kg lapdogs, accidental lap hops, loud snores, and gentle giants who think they can hide behind telegraph poles.
+              Authentic streetwear for humans owned by gentle giants. Founded in the UK by Pati & Obi the Doberman. Inspired by clumsy paws, zero personal space, and the lovable lapdogs who run our lives.
             </p>
             <div class="flex flex-wrap items-center gap-3 text-xs font-bold pt-2">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mint/30 border-2 border-ink rounded-lg shadow-brutal-sm transform -rotate-1">
-                🐾 Couch Potato Certified
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-olive/15 text-olive-dark border-2 border-ink rounded-lg shadow-brutal-sm transform -rotate-1">
+                🐾 Large Breed Community
               </span>
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-canvas-butter border-2 border-ink rounded-lg shadow-brutal-sm transform rotate-2">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-rust/15 text-rust-dark border-2 border-ink rounded-lg shadow-brutal-sm transform rotate-1">
                 🇬🇧 Hand-Checked in Leicester
               </span>
             </div>
@@ -145,9 +152,9 @@ const fullTitle = `${title} | ${siteName}`;
             <h4 class="text-xs font-display font-bold uppercase tracking-wider text-ink">Explore The Pack</h4>
             <ul class="space-y-2 text-sm font-medium">
               <li><a href="/shop#collection" class="hover:text-rust underline decoration-2 underline-offset-4 decoration-rust">Current Drop (Apparel)</a></li>
+              <li><a href="/shop#story" class="hover:text-rust underline decoration-2 underline-offset-4 decoration-rust">Pati & Obi's Story</a></li>
               <li><a href="/shop#fit-guide" class="hover:text-rust underline decoration-2 underline-offset-4 decoration-rust">Sizing & Lapdog Matrix</a></li>
-              <li><a href="/shop#about" class="hover:text-rust underline decoration-2 underline-offset-4 decoration-rust">The Clumsy Manifesto</a></li>
-              <li><a href="/#waitlist" class="hover:text-rust underline decoration-2 underline-offset-4 decoration-rust">Drop 02 Waitlist</a></li>
+              <li><a href="/#waitlist" class="hover:text-rust underline decoration-2 underline-offset-4 decoration-rust">Drop 01 Waitlist</a></li>
             </ul>
           </div>
 
@@ -167,7 +174,7 @@ const fullTitle = `${title} | ${siteName}`;
         </div>
 
         <div class="border-t-2 border-ink mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-bold text-ink-light gap-4">
-          <p>&copy; {new Date().getFullYear()} {BRAND_CONFIG.name} Ltd. All clumsy paws reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {BRAND_CONFIG.name} Ltd. Built with love for large breed dogs.</p>
           <div class="flex space-x-6">
             <span class="hover:text-ink">Terms of Pack</span>
             <span class="hover:text-ink">Privacy Shield</span>

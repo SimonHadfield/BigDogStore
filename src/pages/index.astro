@@ -4,235 +4,405 @@ import { PRODUCTS } from '../data/products';
 import { BRAND_CONFIG } from '../data/brand';
 import HoodieMockup from '../components/HoodieMockup.astro';
 
-// If WAITLIST_MODE is false, render the full storefront
-const isWaitlist = BRAND_CONFIG.WAITLIST_MODE;
+// Asset availability toggles / paths:
+// TODO: Drop real photo of Pati & Obi into src/assets/pati-and-obi.jpg
+// When added, set founderPhotoUrl = '/src/assets/pati-and-obi.jpg' (or import image)
+const founderPhotoUrl: string | null = null;
+
+// TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/
+// When added, set hoodieAssetUrl = '/src/assets/products/dog-mom-club-hoodie.png'
+const hoodieAssetUrl: string | null = null;
+
 const heroProduct = PRODUCTS[0];
 ---
 
-{isWaitlist ? (
-  <BaseLayout
-    title={`${BRAND_CONFIG.name} | Retro Streetwear for Clumsy Giants`}
-    description="Drop 01 Coming Soon. Heavyweight 480GSM hoodies and retro streetwear inspired by 40kg lapdogs, clumsy paws, and personal space violations. Join the waitlist for early pack access."
-  >
-    <!-- Waitlist Hero Section -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<BaseLayout
+  title={`${BRAND_CONFIG.name} | Streetwear for Large Breed Lovers`}
+  description="Drop 01 Waitlist. Authentic, heavyweight streetwear for large breed dog lovers, inspired by Dobermans and gentle giants. Founded by Pati & Obi."
+>
+  <!-- Authentic Hero Section with Pati & Obi Frame + Drop 01 Waitlist Signup -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <!-- Left Column: Headline, Doodles, Authentic Copy & Email Signup -->
+      <div class="lg:col-span-7 space-y-6">
         
-        <!-- Left: Bold Playful Copy + Email Signup Form -->
-        <div class="lg:col-span-7 space-y-6">
-          
-          <!-- Fun Neo-brutalist Sticker Badge Row -->
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="px-3 py-1 bg-mint text-ink text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-2">
-              🐾 Drop 01 Coming Soon
-            </span>
-            <span class="px-3 py-1 bg-card-vanilla text-ink text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform rotate-1">
-              🇬🇧 UK Hand-Checked
-            </span>
-            <span class="px-3 py-1 bg-rust text-white text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-1">
-              480GSM Heavyweight
-            </span>
-          </div>
+        <!-- Fun Earthy Badge Row -->
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="px-3.5 py-1 bg-olive text-white text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-1">
+            🐾 Drop 01 Waitlist
+          </span>
+          <span class="px-3 py-1 bg-card-cream text-ink text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform rotate-1">
+            🇬🇧 UK Hand-Checked
+          </span>
+          <span class="px-3 py-1 bg-rust text-white text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-2">
+            480GSM Heavyweight
+          </span>
+        </div>
 
-          <!-- Bold Groovy Headline -->
-          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-bold text-ink tracking-tight leading-[1.05]">
-            Streetwear for humans owned by <br />
-            <span class="inline-block px-3 py-1 bg-card-vanilla border-2 border-ink shadow-brutal rounded-2xl text-rust transform -rotate-1 mt-2">
-              40kg clumsy giants.
+        <!-- Playful Headline with Hand-Drawn SVG Doodles -->
+        <div class="relative">
+          <!-- Sparkle Doodle (Top Left) -->
+          <svg class="absolute -top-6 -left-4 w-7 h-7 text-rust pointer-events-none transform -rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" />
+          </svg>
+
+          <!-- Motion Lines Doodle (Top Right) -->
+          <svg class="absolute -top-5 right-6 w-8 h-8 text-olive pointer-events-none transform rotate-12 hidden sm:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M5 6l4-2M4 12l5-1M6 18l3-2" />
+          </svg>
+
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-bold text-ink tracking-tight leading-[1.06]">
+            Streetwear for <br />
+            <span class="relative inline-block px-3 py-1 bg-card-cream border-2 border-ink shadow-brutal rounded-2xl text-rust transform -rotate-1 mt-2">
+              Large Breed Lovers
+              <!-- Hand-Drawn Heart Doodle -->
+              <svg class="absolute -bottom-4 -right-4 w-6 h-6 text-burgundy fill-burgundy/20 transform rotate-12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
             </span>
           </h1>
+        </div>
 
-          <!-- Body Subtext -->
-          <p class="text-base sm:text-lg text-ink font-medium leading-relaxed max-w-xl">
-            {BRAND_CONFIG.heroSubheadline} We're preparing our first limited micro-batch of loopback hoodies and vintage boxy tees.
-          </p>
+        <!-- Authentic Founder Copy -->
+        <p class="text-base sm:text-lg text-ink font-medium leading-relaxed max-w-xl">
+          Founded in the UK by Pati & Obi (our 40kg velcro Doberman). Designed for gentle giants who take up the entire sofa, step on your bare toes, and rest their heavy chins right on your collarbone.
+        </p>
 
-          <!-- Email Signup Form Card (Neo-Brutalist) -->
-          <div id="waitlist" class="bg-card-vanilla border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg max-w-xl space-y-4">
-            <div>
-              <span class="text-xs font-display font-bold uppercase tracking-wider text-rust block mb-1">
+        <!-- Drop 01 Waitlist Email Signup Card -->
+        <div id="waitlist" class="bg-card-cream border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg max-w-xl space-y-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-display font-bold uppercase tracking-wider text-rust">
                 Join The Pack Early Access
               </span>
-              <h3 class="text-2xl font-display font-bold text-ink">
-                Get first dibs on Drop 01
-              </h3>
-              <p class="text-xs text-ink-light font-medium mt-1">
-                Zero spam. Only launch notifications, secret pack discounts, and clumsy dog memes.
-              </p>
+              <span class="text-xs px-2 py-0.5 bg-olive/15 text-olive font-bold rounded-full border border-ink/40">
+                Small-Batch
+              </span>
             </div>
-
-            <form id="waitlist-form" class="space-y-3">
-              <div class="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  name="email"
-                  id="waitlist-email"
-                  required
-                  placeholder="enter.your@email.co.uk"
-                  class="flex-grow px-4 py-3.5 bg-canvas-butter/20 border-2 border-ink rounded-xl text-sm font-bold text-ink placeholder:text-ink-light/60 focus:outline-none focus:ring-2 focus:ring-rust"
-                />
-                <button
-                  type="submit"
-                  id="waitlist-submit"
-                  class="px-6 py-3.5 bg-rust hover:bg-rust-dark text-card-vanilla font-display font-bold text-sm uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center justify-center space-x-2"
-                >
-                  <span>Bark At Me!</span>
-                  <span>🐾</span>
-                </button>
-              </div>
-
-              <!-- Live Status Message Container -->
-              <div id="waitlist-status" class="hidden text-xs font-bold p-3 rounded-xl border-2 border-ink transition-all"></div>
-            </form>
-
-            <div class="flex items-center space-x-3 text-[11px] font-bold text-ink-light pt-1">
-              <span>🔒 100% spam-free guarantee</span>
-              <span>&bull;</span>
-              <span>🇬🇧 UK micro-batch release</span>
-            </div>
+            <h3 class="text-2xl font-display font-bold text-ink mt-1">
+              Be first in line when Drop 01 opens
+            </h3>
+            <p class="text-xs text-ink-light font-medium mt-1">
+              Zero spam. Only launch notifications, secret pack discounts, and clumsy dog stories.
+            </p>
           </div>
 
-          <!-- Quick Preview Store Link -->
-          <div class="pt-2">
-            <a
-              href="/shop"
-              class="inline-flex items-center text-xs font-display font-bold uppercase tracking-wider text-ink underline decoration-2 decoration-rust underline-offset-4 hover:text-rust"
-            >
-              👀 Want to peek at the full collection now? Browse the store preview &rarr;
-            </a>
-          </div>
+          <form id="waitlist-form" class="space-y-3">
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                name="email"
+                id="waitlist-email"
+                required
+                placeholder="enter.your@email.co.uk"
+                class="flex-grow px-4 py-3.5 bg-canvas-oat/50 border-2 border-ink rounded-xl text-sm font-bold text-ink placeholder:text-ink-light/60 focus:outline-none focus:ring-2 focus:ring-rust"
+              />
+              <button
+                type="submit"
+                id="waitlist-submit"
+                class="px-6 py-3.5 bg-rust hover:bg-rust-dark text-card-cream font-display font-bold text-sm uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center justify-center space-x-2"
+              >
+                <span>Join Waitlist</span>
+                <span>🐾</span>
+              </button>
+            </div>
 
+            <!-- Live Status Message Container -->
+            <div id="waitlist-status" class="hidden text-xs font-bold p-3 rounded-xl border-2 border-ink transition-all"></div>
+          </form>
+
+          <div class="flex items-center space-x-3 text-[11px] font-bold text-ink-light pt-1">
+            <span>🔒 100% spam-free guarantee</span>
+            <span>&bull;</span>
+            <span>🇬🇧 UK hand-packed unboxing</span>
+          </div>
         </div>
 
-        <!-- Right: Drop 01 Teaser Preview Card with Hoodie Mockup -->
-        <div class="lg:col-span-5">
-          <div class="bg-card-vanilla border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-xl relative transform rotate-1 hover:rotate-0 transition-transform duration-300">
-            
-            <!-- Corner Sticker -->
-            <div class="absolute -top-4 -right-3 z-20 px-3 py-1.5 bg-canvas-butter text-ink font-display text-xs font-bold uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal-sm transform rotate-6">
-              Drop 01 Star
-            </div>
+        <!-- Quick Storefront Peek Link -->
+        <div class="pt-1">
+          <a
+            href="/shop"
+            class="inline-flex items-center text-xs font-display font-bold uppercase tracking-wider text-ink underline decoration-2 decoration-rust underline-offset-4 hover:text-rust"
+          >
+            👀 Want to peek at our Drop 01 pieces now? Browse the store preview &rarr;
+          </a>
+        </div>
 
-            <!-- Vector Mockup Component Slot -->
-            <HoodieMockup
-              color="#1A1614"
-              label="480GSM French Loopback Fleece"
-              badge="Drop 01 Hero"
-              hoodieColorName="Obsidian Bark"
-              class="mb-6"
-            />
+      </div>
 
-            <!-- Teaser Details -->
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <h3 class="text-xl font-display font-bold text-ink">
-                  Personal Space Violator Hoodie
-                </h3>
-                <span class="text-xl font-display font-bold text-rust">
-                  £95
+      <!-- Right Column: Pati & Obi Authentic Photo Frame + Drop 01 Star Teaser -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Clean Photo Frame for Pati & Obi with Graceful Placeholder Fallback -->
+        <!-- TODO: Drop real photo of Pati & Obi into src/assets/pati-and-obi.jpg -->
+        <div class="bg-card-cream border-2 border-ink rounded-3xl p-5 sm:p-6 shadow-brutal-xl relative transform rotate-1 hover:rotate-0 transition-transform duration-300">
+          
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-3 py-1 bg-olive text-white text-[11px] font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-2">
+              The Founders
+            </span>
+            <span class="text-xs font-mono font-bold text-ink-light">
+              Pati & Obi (40kg Doberman)
+            </span>
+          </div>
+
+          <!-- Photo Container -->
+          <div class="relative aspect-[4/3] rounded-2xl border-2 border-ink overflow-hidden bg-canvas-oat/70 flex items-center justify-center">
+            {founderPhotoUrl ? (
+              <img
+                src={founderPhotoUrl}
+                alt="Pati & Obi the Doberman, founders of Clumsy Giants"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            ) : (
+              <!-- Graceful Styled Fallback Placeholder -->
+              <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-canvas-oat via-card-cream to-canvas-oat relative">
+                <!-- Retro background grid pattern -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#1C1917 1.5px, transparent 1.5px); background-size: 14px 14px;"></div>
+                
+                <div class="w-16 h-16 rounded-full bg-rust/20 border-2 border-ink flex items-center justify-center text-3xl mb-3 shadow-brutal-sm">
+                  🐕‍🦺
+                </div>
+                <h4 class="font-display font-bold text-ink text-base">
+                  Pati & Obi Photo Frame
+                </h4>
+                <p class="text-[11px] text-ink-light font-medium max-w-xs mt-1">
+                  Ready for our real photo: walking in the British drizzle, testing hoodies against Obi's wet nose.
+                </p>
+                <span class="mt-3 px-2.5 py-1 bg-card-cream border border-ink/40 rounded-md text-[10px] font-mono text-ink/75">
+                  src/assets/pati-and-obi.jpg
                 </span>
               </div>
-              <p class="text-xs text-ink-light font-medium leading-relaxed">
-                480GSM heavyweight loopback cotton built for 40kg lapdogs who rest their heavy chins directly on your chest the moment you sit down.
-              </p>
+            )}
+          </div>
 
-              <!-- Playful Quote Sticker -->
-              <div class="p-3 bg-canvas-butter/40 border-2 border-ink rounded-xl text-xs font-bold text-ink italic">
-                🐾 "If I fits, I sits. And even if I don't fits, I still sits on your lap."
+          <!-- Caption -->
+          <div class="mt-3 flex items-center justify-between text-xs font-bold text-ink">
+            <span>"He's clumsy, huge, and thinks he's a lapdog."</span>
+            <span class="text-rust">🐾</span>
+          </div>
+        </div>
+
+        <!-- Drop 01 Preview Teaser Card with Hoodie Slot -->
+        <!-- TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/ -->
+        <div class="bg-card-cream border-2 border-ink rounded-3xl p-5 sm:p-6 shadow-brutal-lg relative">
+          
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-[11px] font-display font-bold uppercase tracking-wider text-rust block">
+                Drop 01 Signature Piece
+              </span>
+              <h3 class="text-lg font-display font-bold text-ink">
+                Personal Space Violator Hoodie
+              </h3>
+            </div>
+            <span class="text-xl font-display font-bold text-rust">
+              £95
+            </span>
+          </div>
+
+          <!-- Hoodie Mockup Slot -->
+          <HoodieMockup
+            color="#1C1917"
+            label="480GSM Loopback Terry"
+            badge="Drop 01 Star"
+            hoodieColorName="Warm Charcoal"
+            imageSrc={hoodieAssetUrl ?? undefined}
+            class="mb-4"
+          />
+
+          <p class="text-xs text-ink-light font-medium leading-relaxed mb-4">
+            480GSM French loopback fleece cut specifically for 40kg lapdogs who rest their heavy chin on your chest the moment you sit down.
+          </p>
+
+          <a
+            href="/products/nobile-heavyweight-hoodie"
+            class="block w-full text-center py-3 px-4 bg-ink hover:bg-rust text-card-cream font-display font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all"
+          >
+            Inspect Piece Specs & Fabric Details &rarr;
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4-Pillar Trust Bar -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t-2 border-b-2 border-ink/20">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      
+      <div class="bg-card-cream border-2 border-ink rounded-2xl p-5 shadow-brutal text-center transform -rotate-1 hover:rotate-0 transition-transform">
+        <span class="text-3xl mb-2 block">🧶</span>
+        <h3 class="text-xs font-display font-bold text-ink uppercase block">Premium Heavyweight Quality</h3>
+        <span class="text-[11px] text-ink-light font-medium block mt-1">480GSM custom loopback fleece built to endure claw marks & zoomies</span>
+      </div>
+
+      <div class="bg-card-cream border-2 border-ink rounded-2xl p-5 shadow-brutal text-center transform rotate-1 hover:rotate-0 transition-transform">
+        <span class="text-3xl mb-2 block">📦</span>
+        <h3 class="text-xs font-display font-bold text-ink uppercase block">Hand-Packed Unboxing</h3>
+        <span class="text-[11px] text-ink-light font-medium block mt-1">Custom paw-print tissue wrap, personal note & free die-cut sticker</span>
+      </div>
+
+      <div class="bg-card-cream border-2 border-ink rounded-2xl p-5 shadow-brutal text-center transform -rotate-1 hover:rotate-0 transition-transform">
+        <span class="text-3xl mb-2 block">🐾</span>
+        <h3 class="text-xs font-display font-bold text-ink uppercase block">Large Breed Community</h3>
+        <span class="text-[11px] text-ink-light font-medium block mt-1">Celebrating gentle giants, floppy paws & zero personal space</span>
+      </div>
+
+      <div class="bg-card-cream border-2 border-ink rounded-2xl p-5 shadow-brutal text-center transform rotate-1 hover:rotate-0 transition-transform">
+        <span class="text-3xl mb-2 block">🔍</span>
+        <h3 class="text-xs font-display font-bold text-ink uppercase block">Small-Batch Designs</h3>
+        <span class="text-[11px] text-ink-light font-medium block mt-1">Micro-batch runs hand-checked in Leicester before dispatch</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Compact "Packed With Love (And Probably Dog Hair)" Story & Unboxing Block -->
+  <!-- Replaces previous bulky collection grid with a warm unboxing and small-batch check feature -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="bg-card-cream border-2 border-ink rounded-3xl p-8 sm:p-12 shadow-brutal-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Story Copy -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="flex items-center space-x-2">
+            <span class="px-3 py-1 bg-burgundy text-white text-xs font-display font-bold uppercase rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-1">
+              The Unboxing Experience
+            </span>
+            <span class="text-xs font-bold text-rust">
+              Every Parcel Treated Like Royalty
+            </span>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl font-display font-bold text-ink tracking-tight">
+            Packed with Love <br />
+            <span class="text-rust">(And Probably Dog Hair).</span>
+          </h2>
+
+          <p class="text-sm sm:text-base text-ink font-medium leading-relaxed">
+            We don't do anonymous warehouse conveyor belts. Every Clumsy Giants hoodie and tee is inspected by hand in the UK, lovingly folded in our custom paw-print tissue paper, and sealed with a founder's pack note.
+          </p>
+
+          <!-- 3 Packaging Highlights -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="p-4 bg-canvas-oat/50 border-2 border-ink rounded-2xl shadow-brutal-sm">
+              <span class="text-2xl block mb-1">🔍</span>
+              <h4 class="text-xs font-display font-bold text-ink uppercase">Small-Batch Check</h4>
+              <p class="text-[11px] text-ink-light mt-0.5">Every seam, hood eyelet & print inspected before dispatch.</p>
+            </div>
+            <div class="p-4 bg-canvas-oat/50 border-2 border-ink rounded-2xl shadow-brutal-sm">
+              <span class="text-2xl block mb-1">🎁</span>
+              <h4 class="text-xs font-display font-bold text-ink uppercase">Paw Tissue Wrap</h4>
+              <p class="text-[11px] text-ink-light mt-0.5">Recycled craft wrap with our signature paw pattern.</p>
+            </div>
+            <div class="p-4 bg-canvas-oat/50 border-2 border-ink rounded-2xl shadow-brutal-sm">
+              <span class="text-2xl block mb-1">✨</span>
+              <h4 class="text-xs font-display font-bold text-ink uppercase">Free Die-Cut Sticker</h4>
+              <p class="text-[11px] text-ink-light mt-0.5">Heavy-duty vinyl sticker in every parcel for your bottle or crate.</p>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a
+              href="#waitlist"
+              class="px-5 py-3 bg-rust hover:bg-rust-dark text-card-cream font-display font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all"
+            >
+              Get On The Drop 01 Waitlist &rarr;
+            </a>
+            <a
+              href="/shop"
+              class="px-5 py-3 bg-canvas-oat hover:bg-canvas-oat/80 text-ink font-display font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal-sm"
+            >
+              Peek At Sizing & Products
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual Package Mockup / Sticker Card -->
+        <div class="lg:col-span-5">
+          <div class="relative bg-canvas-oat/80 border-2 border-ink rounded-3xl p-6 sm:p-8 shadow-brutal-lg">
+            
+            <!-- Tilted Die-Cut Sticker Mockup Preview -->
+            <div class="bg-card-cream border-2 border-ink rounded-2xl p-6 shadow-brutal transform rotate-2 hover:rotate-0 transition-transform">
+              <div class="flex items-center justify-between border-b-2 border-ink pb-3 mb-4">
+                <span class="text-xs font-display font-bold uppercase text-ink">Free Sticker In Every Parcel</span>
+                <span class="px-2 py-0.5 bg-olive text-white text-[10px] font-mono rounded">FREE</span>
               </div>
+              <div class="flex flex-col items-center justify-center py-4 text-center space-y-2">
+                <div class="w-20 h-20 bg-canvas-butter border-2 border-ink rounded-full flex items-center justify-center text-4xl shadow-brutal-sm transform -rotate-6">
+                  🐾
+                </div>
+                <span class="font-display font-bold text-lg text-ink">
+                  40kg Lapdog Club
+                </span>
+                <span class="text-[11px] font-sans font-bold text-rust">
+                  Heavy-Duty Waterproof Vinyl
+                </span>
+              </div>
+            </div>
 
-              <!-- Button linking to product preview -->
-              <a
-                href="/products/nobile-heavyweight-hoodie"
-                class="block w-full text-center py-3.5 px-4 bg-ink hover:bg-rust text-card-vanilla font-display font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all mt-4"
-              >
-                Inspect Piece Specs &rarr;
-              </a>
+            <!-- Hand-written style note card -->
+            <div class="mt-4 bg-card-cream border-2 border-ink rounded-xl p-4 shadow-brutal-sm text-xs font-medium text-ink space-y-1">
+              <span class="text-[10px] font-mono font-bold text-olive uppercase block">From Pati & Obi:</span>
+              <p class="italic text-ink-light">
+                "Thank you for loving gentle giants as much as we do. Enjoy your hoodie—and give that big hound a massive belly rub from us!"
+              </p>
             </div>
 
           </div>
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Playful Badges Bar -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        
-        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform -rotate-1 hover:rotate-0 transition-transform">
-          <span class="text-3xl mb-1 block">🛋️</span>
-          <span class="text-xs font-display font-bold text-ink uppercase block">Certified Couch Potato</span>
-          <span class="text-[11px] text-ink-light font-medium">Built for 40kg lap snuggles</span>
-        </div>
+  <!-- Lightweight Client-Side Waitlist Form Script -->
+  <script is:inline>
+    const form = document.getElementById('waitlist-form');
+    const emailInput = document.getElementById('waitlist-email');
+    const submitBtn = document.getElementById('waitlist-submit');
+    const statusDiv = document.getElementById('waitlist-status');
 
-        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform rotate-1 hover:rotate-0 transition-transform">
-          <span class="text-3xl mb-1 block">🐾</span>
-          <span class="text-xs font-display font-bold text-ink uppercase block">40kg Lapdog Approved</span>
-          <span class="text-[11px] text-ink-light font-medium">Loopback terry sheds fur easily</span>
-        </div>
+    if (form && emailInput && statusDiv && submitBtn) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
 
-        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform -rotate-1 hover:rotate-0 transition-transform">
-          <span class="text-3xl mb-1 block">💧</span>
-          <span class="text-xs font-display font-bold text-ink uppercase block">Slobber Tested</span>
-          <span class="text-[11px] text-ink-light font-medium">Thick fabric won't show splatter</span>
-        </div>
+        if (!email) return;
 
-        <div class="bg-card-vanilla border-2 border-ink rounded-2xl p-4 shadow-brutal text-center transform rotate-2 hover:rotate-0 transition-transform">
-          <span class="text-3xl mb-1 block">🔍</span>
-          <span class="text-xs font-display font-bold text-ink uppercase block">UK Hand-Checked</span>
-          <span class="text-[11px] text-ink-light font-medium">Micro-batch printed in Leicester</span>
-        </div>
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Barking...';
+        statusDiv.className = 'hidden';
 
-      </div>
-    </section>
+        try {
+          const res = await fetch('/api/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          });
 
-    <!-- Lightweight Client-Side Waitlist Form Script -->
-    <script is:inline>
-      const form = document.getElementById('waitlist-form');
-      const emailInput = document.getElementById('waitlist-email');
-      const submitBtn = document.getElementById('waitlist-submit');
-      const statusDiv = document.getElementById('waitlist-status');
+          const data = await res.json();
 
-      if (form && emailInput && statusDiv && submitBtn) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const email = emailInput.value.trim();
-
-          if (!email) return;
-
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Barking...';
-          statusDiv.className = 'hidden';
-
-          try {
-            const res = await fetch('/api/waitlist', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email }),
-            });
-
-            const data = await res.json();
-
-            if (res.ok) {
-              statusDiv.textContent = data.message || "You're in the pack! We'll bark when Drop 01 goes live. 🐾";
-              statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-mint text-ink shadow-brutal-sm';
-              emailInput.value = '';
-            } else {
-              statusDiv.textContent = data.error || 'Oops! Please try again.';
-              statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-bubblegum text-ink shadow-brutal-sm';
-            }
-          } catch (err) {
-            statusDiv.textContent = 'Network hiccup! Please try again.';
-            statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-bubblegum text-ink shadow-brutal-sm';
-          } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>Bark At Me!</span> <span>🐾</span>';
+          if (res.ok) {
+            statusDiv.textContent = data.message || "You're in the pack! We'll bark when Drop 01 goes live. 🐾";
+            statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-olive text-white shadow-brutal-sm';
+            emailInput.value = '';
+          } else {
+            statusDiv.textContent = data.error || 'Oops! Please try again.';
+            statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-burgundy text-white shadow-brutal-sm';
           }
-        });
-      }
-    </script>
-  </BaseLayout>
-) : (
-  <meta http-equiv="refresh" content="0; url=/shop" />
-)}
+        } catch (err) {
+          statusDiv.textContent = 'Network hiccup! Please try again.';
+          statusDiv.className = 'block text-xs font-bold p-3 rounded-xl border-2 border-ink bg-burgundy text-white shadow-brutal-sm';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Join Waitlist</span> <span>🐾</span>';
+        }
+      });
+    }
+  </script>
+</BaseLayout>

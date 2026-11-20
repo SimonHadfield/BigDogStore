@@ -5,37 +5,49 @@ export default {
     extend: {
       colors: {
         canvas: {
-          butter: '#F8D26A', // Vibrant Retro Butter/Marigold canvas
-          periwinkle: '#D8E6FA', // Soft Periwinkle Blue alternative
+          butter: '#EDE3D5', // Warm Oat/Sand canvas
+          oat: '#EDE3D5',
+          periwinkle: '#D8E6FA',
         },
         card: {
-          vanilla: '#FFFDF7', // Crisp Off-White/Vanilla product cards
+          vanilla: '#F8F4EE', // Warm Cream cards
+          cream: '#F8F4EE',
         },
         ink: {
-          DEFAULT: '#1A1614', // Deep Ink 2px borders & typography
-          light: '#36302C',
+          DEFAULT: '#1C1917', // Deep Charcoal text & borders
+          light: '#44403C',
         },
         rust: {
-          DEFAULT: '#E06D3B', // Doberman Rust primary buttons
-          dark: '#C45727',
-          light: '#F48E60',
+          DEFAULT: '#C87A4B', // Doberman Tan accent
+          dark: '#B06538',
+          light: '#DE9367',
+        },
+        olive: {
+          DEFAULT: '#4B5842', // Forest Olive accent
+          dark: '#3D4735',
+          light: '#657659',
+        },
+        burgundy: {
+          DEFAULT: '#5C2B33', // Burgundy accent
+          dark: '#452026',
+          light: '#793944',
         },
         mint: {
-          DEFAULT: '#52B788', // Mint/Sage sticker badges
-          dark: '#3A966A',
-          light: '#74C69D',
-          faint: '#EAF7EE',
+          DEFAULT: '#4B5842', // Forest Olive badge
+          dark: '#3D4735',
+          light: '#657659',
+          faint: '#EEF2EC',
         },
         bubblegum: '#F28482',
         sky: '#84D2F6',
         creamsicle: '#F6BD60',
       },
       boxShadow: {
-        brutal: '4px 4px 0px #1A1614',
-        'brutal-sm': '2px 2px 0px #1A1614',
-        'brutal-lg': '6px 6px 0px #1A1614',
-        'brutal-xl': '8px 8px 0px #1A1614',
-        'brutal-hover': '1px 1px 0px #1A1614',
+        brutal: '4px 4px 0px #1C1917',
+        'brutal-sm': '2px 2px 0px #1C1917',
+        'brutal-lg': '6px 6px 0px #1C1917',
+        'brutal-xl': '8px 8px 0px #1C1917',
+        'brutal-hover': '1px 1px 0px #1C1917',
       },
       fontFamily: {
         display: [

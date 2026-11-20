@@ -27,6 +27,8 @@ export interface Product {
     primary: string;
     secondary: string;
     alt: string;
+    // TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/
+    assetPath?: string;
   };
   sizes: ('S' | 'M' | 'L' | 'XL' | 'XXL')[];
   colors: ProductColor[];
@@ -53,13 +55,15 @@ export const PRODUCTS: Product[] = [
     images: {
       primary: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1200&q=80',
       secondary: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Big Dog Club 480GSM Heavyweight Hoodie in Warm Espresso on model'
+      alt: 'Clumsy Giants 480GSM Heavyweight Hoodie in Warm Charcoal on model',
+      // TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/
+      assetPath: 'src/assets/products/dog-mom-club-hoodie.png'
     },
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: [
-      { name: 'Warm Espresso', hex: '#1E1B18', slug: 'espresso' },
-      { name: 'Doberman Tan', hex: '#D97736', slug: 'tan' },
-      { name: 'Oatmeal Bone', hex: '#F2EAE0', slug: 'oatmeal' }
+      { name: 'Warm Charcoal', hex: '#1C1917', slug: 'charcoal' },
+      { name: 'Doberman Tan', hex: '#C87A4B', slug: 'tan' },
+      { name: 'Forest Olive', hex: '#4B5842', slug: 'olive' }
     ],
     specs: {
       weight: '480 GSM (Ultra-Heavyweight Loopback)',
@@ -92,13 +96,15 @@ export const PRODUCTS: Product[] = [
     images: {
       primary: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80',
       secondary: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Gentle Giant Club 280GSM Boxy Tee in Soft Sand'
+      alt: 'Gentle Giant Club 280GSM Boxy Tee in Soft Sand',
+      // TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/
+      assetPath: 'src/assets/products/gentle-giant-tee.png'
     },
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: [
-      { name: 'Soft Sand', hex: '#F2EAE0', slug: 'sand' },
-      { name: 'Deep Espresso', hex: '#1E1B18', slug: 'espresso' },
-      { name: 'Matcha Sage', hex: '#4A7C59', slug: 'sage' }
+      { name: 'Warm Oat', hex: '#EDE3D5', slug: 'oat' },
+      { name: 'Deep Charcoal', hex: '#1C1917', slug: 'charcoal' },
+      { name: 'Forest Olive', hex: '#4B5842', slug: 'olive' }
     ],
     specs: {
       weight: '280 GSM (Chunky Single Jersey)',
@@ -109,7 +115,7 @@ export const PRODUCTS: Product[] = [
     },
     features: [
       'Small-batch release: printed and hand-checked in the UK (5–7 working days dispatch)',
-      'Retro collegiate "Big Dog Club & Social" typographic chest crest',
+      'Retro collegiate "Gentle Giant Club" typographic chest crest',
       'Ultra-dense 280GSM yarn that won\'t cling or show slobber watermarks',
       'Seamless twin-needle stitching built to withstand enthusiastic greetings'
     ],
@@ -118,81 +124,83 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'prod_handler_jacket_03',
-    slug: 'handler-field-jacket',
-    sku: 'BDC-JKT-360-SAG',
-    title: '360GSM "Mud & Zoomies" Canvas Overshirt',
-    subtitle: 'Rugged brushed duck canvas with deep treat-proof pockets & brass snaps',
-    price: 130,
+    slug: 'cold-walks-overshirt',
+    sku: 'BDC-SH-350-FOR',
+    title: '350GSM "Cold Morning Walks" Field Overshirt',
+    subtitle: 'Heavy canvas utility shirt with reinforced pocketing for 500 bags & high-value treats',
+    price: 110,
     currency: 'GBP',
-    description: 'An overshirt tough enough for blackberry brambles and damp British park strolls, yet stylish enough for Sunday pub pints with your gentle monster. Cut from 360GSM heavy cotton duck canvas with dual cargo pockets big enough for tennis balls, half a bag of liver treats, and two sets of leashes.',
-    editorialNote: 'Pre-washed for a broken-in feel straight out of the box. The heavy canvas naturally sheds brambles and dried park mud.',
-    inspiration: 'For anyone who has been dragged across a muddy football pitch because their dog saw an interesting feather.',
-    goofyQuote: '"Walking a big dog is 20% walking and 80% apologizing for enthusiastic tail wags."',
+    description: 'A heavy 350GSM brushed organic cotton twill overshirt tailored for blustery 6:30 AM winter park missions with your gentle giant. Built with dual oversized chest pockets deep enough for tennis balls, lead clips, and emergency treats.',
+    editorialNote: 'Sturdy, mud-resistant weave that takes muddy paws in stride and looks even better broken in.',
+    inspiration: 'Field-tested in damp British parks where your hound sprints into briar bushes and then expects you to carry them.',
+    goofyQuote: '"Pockets specifically deep enough for four tennis balls and 3 rolls of poop bags."',
     images: {
-      primary: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80',
-      secondary: 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Mud & Zoomies Canvas Overshirt in Forest Sage'
+      primary: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=1200&q=80',
+      secondary: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Cold Walks Field Overshirt in Forest Olive',
+      // TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/
+      assetPath: 'src/assets/products/cold-walks-overshirt.png'
     },
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: [
-      { name: 'Forest Sage', hex: '#4A7C59', slug: 'sage' },
-      { name: 'Toasted Tan', hex: '#D97736', slug: 'tan' },
-      { name: 'Dark Roast', hex: '#1E1B18', slug: 'espresso' }
+      { name: 'Forest Olive', hex: '#4B5842', slug: 'olive' },
+      { name: 'Warm Charcoal', hex: '#1C1917', slug: 'charcoal' }
     ],
     specs: {
-      weight: '360 GSM (Heavy Brushed Canvas)',
-      material: '100% Heavyweight Cotton Duck Canvas with Corduroy Collar',
-      fit: 'Layering overshirt cut to slip easily over our 480GSM hoodie',
-      origin: 'Hand-inspected and finished in Leicester, UK',
-      care: 'Spot clean mud with a damp cloth; machine wash cold when necessary.'
+      weight: '350 GSM (Brushed Cotton Canvas Twill)',
+      material: '100% Organic Canvas Twill',
+      fit: 'Relaxed utility fit; layer comfortably over our 480GSM hoodie',
+      origin: 'Constructed & finished in small UK batches',
+      care: 'Cold wash, hang dry. Brushes clean easily when mud dries.'
     },
     features: [
-      'Small-batch run: individually reviewed for stitch perfection before delivery (5–7 days)',
-      'Oversized gusseted storm pockets specifically tested to fit 2 Chuckit! tennis balls',
-      'Reinforced antique brass snaps that won\'t catch on webbing leashes or harnesses',
-      'Soft corduroy collar lining so your neck stays cozy during chilly 6am morning walks'
+      'Twin oversized chest bellow pockets with heavy button-down flaps',
+      'Reinforced elbows designed for clumsy wrestling sessions',
+      'Corozo nut buttons stitched with heavy thread',
+      'UK small-batch inspection before dispatch'
     ],
     inStock: true,
-    badge: 'Park Tested'
+    badge: 'Park Ready'
   },
   {
-    id: 'prod_corso_fleece_pant_04',
-    slug: 'corso-heavyweight-fleece-pant',
-    sku: 'BDC-PNT-450-ESP',
-    title: '450GSM "Velcro Dog" Heavyweight Sweatpant',
-    subtitle: 'Relaxed tapered sweatpant for couch hogs and professional lap-warmers',
-    price: 85,
+    id: 'prod_velcro_dog_fleece_04',
+    slug: 'velcro-dog-snap-pullover',
+    sku: 'BDC-FL-400-OAT',
+    title: '400GSM "Velcro Dog" Sherpa Snap Pullover',
+    subtitle: 'Deep-pile thermal fleece for dogs who must be physically touching you at all times',
+    price: 105,
     currency: 'GBP',
-    description: 'When your 42kg dog insists on sleeping pressed firmly against your shins, you need sweatpants with serious thermal substance. Spun from 450GSM brushed-back cotton fleece with deep zippered phone pockets so your phone doesn\'t slide out under the cushions during cuddle wrestling matches.',
-    editorialNote: 'Thick, heavyweight fleece that cushions bony canine paws standing on your thighs.',
-    inspiration: 'Honoring the "Velcro Dog" syndrome: where going to the kitchen requires a full canine escort.',
-    goofyQuote: '"You thought you bought a sofa for yourself? That\'s adorable."',
+    description: 'A plush, 400GSM recycled deep-pile sherpa pullover featuring retro 4-snap placket, nylon stand collar, and contrast binding. Designed for those dogs who follow you into the bathroom, sit on your feet while you brush your teeth, and act like a shadow with floppy ears.',
+    editorialNote: 'Silky smooth internal lining ensures no itch, while high-pile exterior repels autumn breezes on frosty morning walks.',
+    inspiration: 'Inspired by Dobermans and large breeds who cannot bear to be more than 2 inches away from your shin.',
+    goofyQuote: '"Personal space? Never heard of her. I will now lay on your slippers."',
     images: {
-      primary: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=1200&q=80',
-      secondary: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Velcro Dog 450GSM Heavyweight Sweatpant in Warm Espresso'
+      primary: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=1200&q=80',
+      secondary: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Velcro Dog Sherpa Snap Pullover in Warm Oat with Forest Olive trim',
+      // TODO: Drop transparent hoodie PNGs (e.g. dog-mom-club-hoodie.png) into src/assets/products/
+      assetPath: 'src/assets/products/velcro-dog-fleece.png'
     },
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: [
-      { name: 'Warm Espresso', hex: '#1E1B18', slug: 'espresso' },
-      { name: 'Oatmeal Bone', hex: '#F2EAE0', slug: 'oatmeal' },
-      { name: 'Muted Matcha', hex: '#4A7C59', slug: 'sage' }
+      { name: 'Warm Oat / Olive', hex: '#EDE3D5', slug: 'oat-olive' },
+      { name: 'Burgundy / Charcoal', hex: '#5C2B33', slug: 'burgundy' }
     ],
     specs: {
-      weight: '450 GSM (Heavy Brushed Fleece)',
-      material: '100% Organic Cotton Fleece',
-      fit: 'Relaxed fit with gentle ankle taper and chunky ribbed waistband',
-      origin: 'Printed, embroidered & checked in Leicester, UK',
-      care: 'Wash cold inside out, tumble low or air dry for longest life.'
+      weight: '400 GSM (Deep-Pile Thermal Sherpa)',
+      material: '100% Recycled Poly-Sherpa with Organic Cotton Lining',
+      fit: 'Slightly roomy vintage outdoor silhouette with elasticated cuffs',
+      origin: 'Hand-finished in small batches in the UK',
+      care: 'Delicate cycle 30°C, air dry. Shakes out like new.'
     },
     features: [
-      'Small-batch drop: hand-checked in the UK before dispatch (5–7 working days)',
-      'Concealed YKK zippered side pockets to safeguard keys and treats on brisk trots',
-      'Heavy-gauge cotton drawcord that won\'t pull through the waistband channel',
-      'Ultra-dense knit that resists pet claw pulls and snagging'
+      'Retro 4-snap placket with reinforced taslan nylon backing',
+      'Ultra-soft windproof organic cotton lining against your skin',
+      'Concealed zip handwarmer pockets lined with brushed micro-jersey',
+      'Small-batch UK verified for perfect stitching'
     ],
     inStock: true,
-    badge: 'Ultimate Cozy'
+    badge: 'Cozy Pick'
   }
 ];
 
