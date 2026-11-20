@@ -12,7 +12,7 @@ interface Props {
 }
 
 const {
-  color = '#1C1917',
+  color = '#1A1816',
   label = '480GSM Heavyweight Loopback',
   badge = 'Drop 01 Exclusive',
   hoodieColorName = 'Warm Charcoal',
@@ -21,16 +21,16 @@ const {
 } = Astro.props;
 ---
 
-<div class={`relative aspect-[4/5] bg-canvas-oat/50 border-2 border-ink rounded-2xl p-6 flex flex-col justify-between overflow-hidden shadow-inner ${className}`}>
-  <!-- Background retro graphic dots -->
-  <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#1C1917 1.5px, transparent 1.5px); background-size: 16px 16px;"></div>
+<div class={`relative aspect-[4/5] bg-[#F7F3EC] rounded-2xl p-6 flex flex-col justify-between overflow-hidden border border-neutral-200/60 ${className}`}>
+  <!-- Subtle ambient gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none"></div>
 
   <!-- Top Mockup Badge Bar -->
   <div class="relative z-10 flex items-center justify-between">
-    <span class="px-2.5 py-1 bg-olive text-white font-display text-[11px] font-bold rounded-lg border-2 border-ink shadow-brutal-sm transform -rotate-2">
+    <span class="px-3 py-1 bg-charcoal text-white font-medium text-[11px] rounded-full tracking-wide">
       {badge}
     </span>
-    <span class="px-2 py-0.5 bg-card-cream border-2 border-ink rounded-md text-[10px] font-mono font-bold text-ink shadow-brutal-sm">
+    <span class="px-2.5 py-0.5 bg-white/90 border border-neutral-200 rounded-full text-[10px] font-mono font-semibold text-neutral-700 shadow-sm">
       480 GSM
     </span>
   </div>
@@ -41,56 +41,62 @@ const {
       <img
         src={imageSrc}
         alt={`${hoodieColorName} Hoodie`}
-        class="max-h-56 w-auto object-contain drop-shadow-[4px_4px_0px_#1C1917] transition-transform hover:scale-105 duration-300"
+        class="max-h-56 w-auto object-contain transition-transform hover:scale-105 duration-300 drop-shadow-md"
       />
     ) : (
       <!-- Graceful Styled Mockup Fallback -->
-      <div class="relative w-44 h-48 sm:w-52 sm:h-56 transition-transform hover:scale-105 duration-300">
-        <svg viewBox="0 0 200 220" class="w-full h-full drop-shadow-[4px_4px_0px_#1C1917]">
+      <div class="relative w-44 h-48 sm:w-52 sm:h-56 transition-transform hover:scale-105 duration-300 drop-shadow-md">
+        <svg viewBox="0 0 200 220" class="w-full h-full">
           <!-- Hoodie Body -->
           <path
             d="M 50 70 L 25 105 L 45 125 L 55 105 L 55 195 L 145 195 L 145 105 L 155 125 L 175 105 L 150 70 L 130 50 C 130 65 70 65 70 50 Z"
             fill={color}
-            stroke="#1C1917"
-            stroke-width="4"
+            stroke="#1A1816"
+            stroke-width="1.5"
             stroke-linejoin="round"
           />
           <!-- Hood Cross Detail -->
           <path
             d="M 70 50 C 70 20 130 20 130 50 C 120 70 80 70 70 50 Z"
             fill={color}
-            stroke="#1C1917"
-            stroke-width="4"
-            stroke-linejoin="round"
+            stroke="#1A1816"
+            stroke-width="1.5"
           />
-          <!-- Kangaroo Pocket -->
+          <!-- Kangaroo Pocket Outline -->
           <path
-            d="M 65 140 L 75 125 L 125 125 L 135 140 L 135 185 L 65 185 Z"
-            fill="#1C1917"
-            fill-opacity="0.18"
-            stroke="#1C1917"
-            stroke-width="3"
-            stroke-linejoin="round"
+            d="M 68 140 L 132 140 L 140 185 L 60 185 Z"
+            fill="none"
+            stroke="rgba(255,255,255,0.22)"
+            stroke-width="1.5"
           />
-          <!-- Chest Graphic Badge: Retro Paw & Typography -->
-          <circle cx="100" cy="98" r="18" fill="#F8F4EE" stroke="#1C1917" stroke-width="2.5" />
-          <ellipse cx="100" cy="102" rx="7" ry="5.5" fill="#C87A4B" />
-          <ellipse cx="94" cy="93" rx="2.5" ry="3.5" fill="#C87A4B" />
-          <ellipse cx="106" cy="93" rx="2.5" ry="3.5" fill="#C87A4B" />
-          <ellipse cx="89" cy="97" rx="2" ry="3" fill="#C87A4B" />
-          <ellipse cx="111" cy="97" rx="2" ry="3" fill="#C87A4B" />
-          <!-- Bottom Hem & Cuffs -->
-          <line x1="55" y1="185" x2="145" y2="185" stroke="#1C1917" stroke-width="3" />
-          <line x1="28" y1="108" x2="43" y2="123" stroke="#1C1917" stroke-width="3" />
-          <line x1="172" y1="108" x2="157" y2="123" stroke="#1C1917" stroke-width="3" />
+          <!-- Drawstrings -->
+          <path
+            d="M 90 60 L 88 105 M 110 60 L 112 105"
+            stroke="rgba(255,255,255,0.4)"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <!-- Minimal Brand Chest Stamp (Clean line) -->
+          <text
+            x="100"
+            y="94"
+            text-anchor="middle"
+            fill="rgba(255,255,255,0.85)"
+            font-size="8"
+            font-family="sans-serif"
+            font-weight="700"
+            letter-spacing="1"
+          >
+            CLUMSY GIANTS
+          </text>
         </svg>
       </div>
     )}
   </div>
 
-  <!-- Bottom Details Label -->
-  <div class="relative z-10 flex items-center justify-between pt-2 border-t-2 border-ink">
-    <span class="text-xs font-bold text-ink">{hoodieColorName}</span>
-    <span class="text-[11px] font-mono text-ink-light">{label}</span>
+  <!-- Bottom Spec Label -->
+  <div class="relative z-10 flex items-center justify-between text-xs font-medium text-neutral-600 pt-2 border-t border-neutral-200/50">
+    <span class="truncate">{hoodieColorName}</span>
+    <span class="text-[10px] uppercase tracking-wider text-neutral-500 font-mono">Loopback Terry</span>
   </div>
 </div>

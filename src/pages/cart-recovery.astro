@@ -14,47 +14,46 @@ const product = slug ? getProductBySlug(slug) : PRODUCTS[0];
 >
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
     
-    <!-- Goofy Icon -->
-    <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-card-vanilla border-2 border-ink text-rust mb-6 shadow-brutal transform rotate-2">
-      <span class="text-4xl">🐾</span>
+    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-neutral-100 text-charcoal mb-6 shadow-sm">
+      <span class="text-3xl">🐾</span>
     </div>
 
-    <span class="px-3 py-1 bg-card-vanilla border-2 border-ink rounded-lg text-xs font-display font-bold uppercase tracking-wider text-rust inline-block mb-3 shadow-brutal-sm">
+    <span class="px-3.5 py-1 bg-neutral-100 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-700 inline-block mb-3">
       Checkout Paused
     </span>
-    <h1 class="text-3xl sm:text-5xl font-display font-bold text-ink tracking-tight mb-4">
+    <h1 class="text-3xl sm:text-5xl font-display font-bold text-charcoal tracking-tight mb-4">
       Did a 40kg Paw Distract You?
     </h1>
 
-    <p class="text-base text-ink font-medium leading-relaxed max-w-xl mx-auto mb-8">
+    <p class="text-base text-neutral-600 font-normal leading-relaxed max-w-xl mx-auto mb-8">
       We completely understand—urgent demands for belly rubs take priority over streetwear. Your piece is reserved in your size and ready whenever you are.
     </p>
 
     {product && (
-      <div class="p-6 bg-card-vanilla border-2 border-ink rounded-3xl text-left flex flex-col sm:flex-row items-center gap-6 mb-8 shadow-brutal">
+      <div class="p-6 bg-[#F4ECE1] rounded-3xl text-left flex flex-col sm:flex-row items-center gap-6 mb-8 shadow-sm">
         <div class="w-28 h-32 flex-shrink-0">
           <HoodieMockup
-            color="#1A1614"
+            color="#1A1816"
             label="480GSM"
             badge="Reserved"
-            hoodieColorName="Obsidian Bark"
-            class="h-full w-full"
+            hoodieColorName="Warm Charcoal"
+            class="h-full w-full bg-white/40 border-0 shadow-none"
           />
         </div>
         <div class="flex-grow space-y-1">
-          <span class="px-2 py-0.5 bg-canvas-butter border border-ink rounded text-[10px] font-bold text-ink uppercase inline-block">
+          <span class="px-2.5 py-0.5 bg-white rounded-full text-[10px] font-semibold text-neutral-700 uppercase inline-block">
             Reserved In Your Size
           </span>
-          <h2 class="text-lg font-display font-bold text-ink">
+          <h2 class="text-lg font-display font-bold text-charcoal">
             {product.title}
           </h2>
-          <p class="text-xs text-ink-light font-medium">
+          <p class="text-xs text-neutral-500 font-medium">
             £{product.price}.00 &bull; {product.specs.weight} &bull; UK Hand-Checked
           </p>
           <div class="pt-2">
             <a
               href={`/products/${product.slug}`}
-              class="text-xs font-display font-bold text-rust hover:text-rust-dark underline decoration-2 decoration-rust"
+              class="text-xs font-semibold text-rust hover:underline"
             >
               Resume Order for {product.title} &rarr;
             </a>
@@ -63,20 +62,20 @@ const product = slug ? getProductBySlug(slug) : PRODUCTS[0];
       </div>
     )}
 
-    <div class="p-4 bg-card-vanilla rounded-2xl border-2 border-ink shadow-brutal-sm text-xs font-medium text-ink max-w-md mx-auto mb-8">
+    <div class="p-4 bg-[#FAF9F6] rounded-2xl border border-neutral-200 text-xs text-neutral-600 max-w-md mx-auto mb-8">
       💡 <strong>Need sizing reassurance?</strong> Our garments have a relaxed, dropped-shoulder fit so you have plenty of room for clumsy lapdog cuddles.
     </div>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
         href={product ? `/products/${product.slug}` : '/shop'}
-        class="w-full sm:w-auto px-8 py-3.5 bg-rust hover:bg-rust-dark text-card-vanilla font-display font-bold text-xs uppercase tracking-wider rounded-2xl border-2 border-ink shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all"
+        class="w-full sm:w-auto px-8 py-3.5 bg-charcoal hover:bg-neutral-800 text-white font-semibold text-xs uppercase tracking-wider rounded-full transition-colors shadow-sm"
       >
         Complete My Order &rarr;
       </a>
       <a
         href="/shop"
-        class="w-full sm:w-auto px-6 py-3.5 bg-card-vanilla hover:bg-card-vanilla/90 border-2 border-ink text-ink font-display font-bold text-xs uppercase tracking-wider rounded-2xl shadow-brutal-sm transition-all"
+        class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-neutral-50 border border-neutral-200 text-charcoal font-semibold text-xs uppercase tracking-wider rounded-full transition-colors shadow-sm"
       >
         Browse Full Drop
       </a>

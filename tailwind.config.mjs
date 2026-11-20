@@ -5,17 +5,26 @@ export default {
     extend: {
       colors: {
         canvas: {
-          butter: '#EDE3D5', // Warm Oat/Sand canvas
-          oat: '#EDE3D5',
-          periwinkle: '#D8E6FA',
+          DEFAULT: '#FFFFFF', // Pure crisp white
+          butter: '#FFFFFF',
+          oat: '#FBF9F5',
+          sand: '#F5EFE6',
         },
         card: {
-          vanilla: '#F8F4EE', // Warm Cream cards
-          cream: '#F8F4EE',
+          DEFAULT: '#FFFFFF',
+          vanilla: '#FFFFFF',
+          cream: '#F4ECE1', // Soft warm rounded card tone (#F4ECE1)
+          soft: '#F4ECE1',
+        },
+        charcoal: {
+          DEFAULT: '#1A1816',
+          dark: '#121110',
+          light: '#2B2724',
         },
         ink: {
-          DEFAULT: '#1C1917', // Deep Charcoal text & borders
-          light: '#44403C',
+          DEFAULT: '#1A1816', // Deep charcoal
+          light: '#57534E',
+          muted: '#78716C',
         },
         rust: {
           DEFAULT: '#C87A4B', // Doberman Tan accent
@@ -32,22 +41,6 @@ export default {
           dark: '#452026',
           light: '#793944',
         },
-        mint: {
-          DEFAULT: '#4B5842', // Forest Olive badge
-          dark: '#3D4735',
-          light: '#657659',
-          faint: '#EEF2EC',
-        },
-        bubblegum: '#F28482',
-        sky: '#84D2F6',
-        creamsicle: '#F6BD60',
-      },
-      boxShadow: {
-        brutal: '4px 4px 0px #1C1917',
-        'brutal-sm': '2px 2px 0px #1C1917',
-        'brutal-lg': '6px 6px 0px #1C1917',
-        'brutal-xl': '8px 8px 0px #1C1917',
-        'brutal-hover': '1px 1px 0px #1C1917',
       },
       fontFamily: {
         display: [
